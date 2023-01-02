@@ -1,0 +1,94 @@
+.Sidebar {
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(255, 255, 255);
+  height: 100vh;
+  width: 600px;
+  position: fixed;
+  top: 0;
+  right: -100%;
+  transition: 850ms;
+  align-items: center;
+  gap: 25px;
+  padding-top: 50px;
+}
+
+.Sidebar.sidebarActive {
+  left: 0;
+  transition: 350ms;
+}
+
+.sidebarTitle {
+  font-size: 40px;
+  font-weight: 700;
+}
+
+.sidebarTotal {
+  font-size: 25px;
+  font-weight: 700;
+}
+
+.checkoutBtn,
+.closeBtn {
+  width: 75%;
+  border: none;
+  height: 50px;
+  font-size: 25px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.checkoutBtn {
+  background-color: rgb(125, 255, 131);
+}
+
+.closeBtn {
+  background-color: rgb(255, 151, 151);
+}
+
+.checkoutBtn:hover {
+  background-color: rgb(108, 221, 113);
+}
+
+.closeBtn:hover {
+  background-color: rgb(215, 128, 128);
+}
+
+.cartContainer {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.cartEmoji {
+  font-size: 100px;
+}
+
+.cartDesciption {
+  font-size: 22px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.cartName {
+  font-weight: 700;
+}
+
+.cartCountControl {
+  display: flex;
+  gap: 25px;
+  align-items: center;
+}
+
+.cartCountAdd,
+.cartCountMinus {
+  font-size: 20px;
+  font-weight: 400;
+}
+
+.cartFlowContainer {
+  max-height: 60%;
+  width: 70%;
+  overflow: auto;
+}
