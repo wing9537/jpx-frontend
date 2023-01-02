@@ -1,0 +1,18 @@
+{
+  "en": {
+    "required": "This field is required.",
+    "pattern": "This field is invalid.",
+    "maxLength": "This field must be at most {{limit}} characters.",
+    "minLength": "This field must be at least {{limit}} characters.",
+    "max": "The maximum value of this field is {{limit}}.",
+    "min": "The minimum value of this field is {{limit}}."
+  },
+  "tc": {
+    "required": "此項必須填寫",
+    "pattern": "請輸入一個有效的值",
+    "maxLength": "此項最多需要填寫{{limit}}個字",
+    "minLength": "此項最少需要填寫{{limit}}個字",
+    "max": "此項最大值為{{limit}}",
+    "min": "此項最小值為{{limit}}"
+  }
+}

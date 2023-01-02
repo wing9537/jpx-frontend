@@ -1,0 +1,16 @@
+{
+  "en": {
+    "title": "Form Submitted",
+    "submit": "Submit",
+    "confirm": "Confirm",
+    "back": "Back",
+    "home": "Home"
+  },
+  "tc": {
+    "title": "已遞交表單",
+    "submit": "遞交",
+    "confirm": "確認",
+    "back": "返回",
+    "home": "主頁"
+  }
+}

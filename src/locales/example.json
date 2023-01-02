@@ -1,0 +1,38 @@
+{
+  "en": {
+    "title": "React Simple Form",
+    "uncontrolled": "Without Control",
+    "customValid": "Custom Validation",
+    "sampleText": "Text Field",
+    "sampleSelect": "Dropdown List",
+    "sampleRadio": "Radio Group",
+    "sampleCheckbox": "Checkbox Group",
+    "sampleDatePicker": "Date Picker",
+    "sampleData": {
+      "opt0": "Testing 1",
+      "opt1": "Testing 2",
+      "opt2": "Testing 3"
+    },
+    "validate": {
+      "exact": "Please input exact content: \"{{text}}\"."
+    }
+  },
+  "tc": {
+    "title": "React 簡易表單",
+    "uncontrolled": "不受控制",
+    "customValid": "自定義驗證",
+    "sampleText": "文字輸入",
+    "sampleSelect": "下拉列表",
+    "sampleRadio": "單選按鈕",
+    "sampleCheckbox": "複選框",
+    "sampleDatePicker": "日期選擇器",
+    "sampleData": {
+      "opt0": "測試 1",
+      "opt1": "測試 2",
+      "opt2": "測試 3"
+    },
+    "validate": {
+      "exact": "請輸入正確的內容: \"{{text}}\""
+    }
+  }
+}
