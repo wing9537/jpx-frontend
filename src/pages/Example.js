@@ -1,14 +1,14 @@
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from "react-i18next";
 import { Box } from "@mui/material";
 
 // components
-import BaseForm from "../components/core/baseForm";
-import BaseInput from "../components/core/baseInput";
-import BaseTextField from "../components/core/baseTextField";
-import BaseSelect from "../components/core/baseSelect";
-import BaseRadio from "../components/core/baseRadio";
-import BaseCheckbox from "../components/core/baseCheckbox";
-import BaseDatePicker from "../components/core/baseDatePicker";
+import BaseForm from "../components/inputs/baseForm";
+import BaseInput from "../components/inputs/baseInput";
+import BaseTextField from "../components/inputs/baseTextField";
+import BaseSelect from "../components/inputs/baseSelect";
+import BaseRadio from "../components/inputs/baseRadio";
+import BaseCheckbox from "../components/inputs/baseCheckbox";
+import BaseDatePicker from "../components/inputs/baseDatePicker";
 
 function Example() {
   const modelObj = {
@@ -39,15 +39,59 @@ function Example() {
   return (
     <BaseForm modelObj={modelObj}>
       <h1 style={{ textAlign: "center" }}>{t("title")}</h1>
-      <Box width={{ xs: "100%", md: "50%" }} display="inline-flex" flexWrap="wrap" justifyContent={{ xs: "center", md: "right" }}>
-        <BaseInput name="sampleText" type="text" label={t("sampleText")} limit={limit.sampleText} />
-        <BaseInput name="customValid" type="text" label={t("customValid")} rules={validExactValue} limit={limit.customValid} />
-        <BaseInput name="sampleDatePicker" type="datepicker" label={t("sampleDatePicker")} limit={limit.sampleDatePicker} />
-        <BaseInput name="sampleSelect" type="select" label={t("sampleSelect")} options={sampleData} limit={limit.sampleSelect} />
-        <BaseInput name="sampleRadio" type="radio" label={t("sampleRadio")} options={sampleData} limit={limit.sampleRadio} />
-        <BaseInput name="sampleCheckbox" type="checkbox" label={t("sampleCheckbox")} options={sampleData} limit={limit.sampleCheckbox} />
+      <Box
+        width={{ xs: "100%", md: "50%" }}
+        display="inline-flex"
+        flexWrap="wrap"
+        justifyContent={{ xs: "center", md: "right" }}
+      >
+        <BaseInput
+          name="sampleText"
+          type="text"
+          label={t("sampleText")}
+          limit={limit.sampleText}
+        />
+        <BaseInput
+          name="customValid"
+          type="text"
+          label={t("customValid")}
+          rules={validExactValue}
+          limit={limit.customValid}
+        />
+        <BaseInput
+          name="sampleDatePicker"
+          type="datepicker"
+          label={t("sampleDatePicker")}
+          limit={limit.sampleDatePicker}
+        />
+        <BaseInput
+          name="sampleSelect"
+          type="select"
+          label={t("sampleSelect")}
+          options={sampleData}
+          limit={limit.sampleSelect}
+        />
+        <BaseInput
+          name="sampleRadio"
+          type="radio"
+          label={t("sampleRadio")}
+          options={sampleData}
+          limit={limit.sampleRadio}
+        />
+        <BaseInput
+          name="sampleCheckbox"
+          type="checkbox"
+          label={t("sampleCheckbox")}
+          options={sampleData}
+          limit={limit.sampleCheckbox}
+        />
       </Box>
-      <Box width={{ xs: "100%", md: "50%" }} display="inline-flex" flexWrap="wrap" justifyContent={{ xs: "center", md: "left" }}>
+      <Box
+        width={{ xs: "100%", md: "50%" }}
+        display="inline-flex"
+        flexWrap="wrap"
+        justifyContent={{ xs: "center", md: "left" }}
+      >
         <BaseTextField label={t("uncontrolled")} type="password" />
         <BaseTextField label={t("uncontrolled")} type="number" />
         <BaseDatePicker label={t("uncontrolled")} />
