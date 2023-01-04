@@ -11,7 +11,7 @@ import Avatar from "@mui/material/Avatar";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import AdbIcon from "@mui/icons-material/Adb";
-import SearchBar from "./SearchBar";
+import SearchBar from "../SearchBar";
 
 const settings = ["Profile", "Account", "Dashboard", "Logout"];
 

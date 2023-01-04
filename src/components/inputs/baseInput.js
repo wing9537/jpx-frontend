@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import { useFormContext } from "react-hook-form";
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from "react-i18next";
 import BaseTextField from "./baseTextField";
 import BaseSelect from "./baseSelect";
 import BaseRadio from "./baseRadio";
 import BaseCheckbox from "./baseCheckbox";
 import BaseDatePicker from "./baseDatePicker";
-import { form } from "../../constant";
-import { isValidDate } from "../../utils";
+import { form } from "../../common/constant";
+import { isValidDate } from "../../common/utils";
 
 function BaseInput({
   name = "",

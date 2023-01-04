@@ -1,13 +1,20 @@
 import React, { useState } from "react";
 import { Box, TextField } from "@mui/material";
 import { DatePicker } from "@mui/x-date-pickers";
-import { date } from "../../constant";
+import { date } from "../../common/constant";
 
 /**
  * @mui DatePicker API
  * @ref https://mui.com/x/api/date-pickers/date-picker/
  */
-function BaseDatePicker({ id = "datepicker", label = "", error = false, helperText = "", inputProps = {}, ...rest }) {
+function BaseDatePicker({
+  id = "datepicker",
+  label = "",
+  error = false,
+  helperText = "",
+  inputProps = {},
+  ...rest
+}) {
   const [dateObj, setDateObj] = useState(null);
 
   const handleChange = (obj, value) => {
