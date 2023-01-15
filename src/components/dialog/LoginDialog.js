@@ -5,13 +5,17 @@ import DialogContentText from '@mui/material/DialogContentText';
 import Dialog from "@mui/material/Dialog";
 import { Button } from "@mui/material";
 import TextField from '@mui/material/TextField';
+import { useTranslation } from "react-i18next";
+
+
 import { Link } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 
 // self component
 import { closeDialog, getDialogStateByName } from "../../redux/dialogSlice";
-
-const emails = ["username@gmail.com", "user02@gmail.com"];
+import BaseInput from "../inputs/baseInput";
+import BaseTextField from "../inputs/baseTextField";
+import BaseForm from "../inputs/baseForm";
 
 function LoginDialog() {
   const open = useSelector(getDialogStateByName("login"));
@@ -24,6 +28,27 @@ function LoginDialog() {
   const handleListItemClick = (value) => {
     console.log(value);
   };
+
+  const modelObj = {
+    sampleText: "",
+    customValid: "",
+    sampleSelect: "",
+    sampleRadio: "",
+    sampleCheckbox: [],
+    sampleDatePicker: "",
+  };
+
+  const limit = {
+    sampleText: { min: 10, max: -1 },
+    customValid: { min: 1, max: -1 },
+    sampleSelect: { min: 1, max: -1 },
+    sampleRadio: { min: 1, max: -1 },
+    sampleCheckbox: { min: 1, max: 1 },
+    sampleDatePicker: { min: 1, max: -1 },
+  };
+
+  const { t } = useTranslation("example");
+  const sampleData = t("sampleData", { returnObjects: true });
 
   return (
     <Dialog onClose={handleClose} open={open} maxWidth='xs'>
@@ -39,17 +64,18 @@ function LoginDialog() {
           placeholder="example@email.com"
           fullWidth
           variant="outlined"
+          required='true'
         />
-        <TextField
-          autoFocus
-          margin="normal"
-          id="password"
-          label="Password"
-          type="password"
-          placeholder="your password"
-          fullWidth
-          variant="outlined"
-        />
+        <BaseForm fullWidth>
+          <BaseInput
+            name="sampleText"
+            type="text"
+            label={t("sampleText")}
+            limit={limit.sampleText}
+            fullWidth
+          />
+        </BaseForm>
+
         <Button variant="contained" fullWidth sx={{ my: 2 }}>Log in</Button>
         <DialogContentText>Don't have a account? <Link underline="hover" href="/sign-up"> Sign up</Link></DialogContentText>
 
