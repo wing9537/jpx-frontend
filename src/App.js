@@ -8,7 +8,7 @@ import { Provider } from "react-redux";
 
 // components
 import Nav from "./components/layout/Nav";
-import Sidebar from "./components/Sidebar";
+import Sidebar from "./components/layout/Sidebar";
 import Footer from "./components/layout/Footer";
 import Manga from "./features/manga/Manga";
 import Example from "./features/Example";
@@ -20,30 +20,18 @@ function App() {
     },
   });
 
-  const [mangaList, setMangaList] = useState([{}]);
-
-  const [isSidebarShow, setIsSidebarShow] = useState(false);
-
-  const handleSidebar = () => setIsSidebarShow(!isSidebarShow);
-
   return (
     <Provider store={store}>
       <ThemeProvider theme={theme}>
         <LocalizationProvider dateAdapter={AdapterMoment}>
           <BrowserRouter basename="/">
-            <Nav handleSidebar={handleSidebar} />
-            <Sidebar
-              isSidebarShow={isSidebarShow}
-              handleSidebar={handleSidebar}
-            />
+            <Nav />
+            <Sidebar />
             <Routes>
-              <Route path="/manga" element={<Manga emojiList={mangaList} />} />
+              <Route path="/manga" element={<Manga />} />
               <Route path="/example" element={<Example />} />
             </Routes>
-            <Footer
-              isSidebarShow={isSidebarShow}
-              handleSidebar={handleSidebar}
-            />
+            <Footer />
           </BrowserRouter>
         </LocalizationProvider>
       </ThemeProvider>

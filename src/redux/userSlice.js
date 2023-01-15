@@ -4,11 +4,11 @@ import {
   createAsyncThunk,
 } from "@reduxjs/toolkit";
 
-const defaultValue = { name: "", token: "" };
+const defaultValue = { name: "Tommy", token: "" };
 
 // thunks
 export const doUserLogin = createAsyncThunk("user/login", async (data) => {
-  //   TODO: call api
+  // TODO: call api
   return { name: "Tommy Kwok", token: "1234" };
 });
 

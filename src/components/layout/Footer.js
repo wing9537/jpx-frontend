@@ -1,8 +1,6 @@
 function Footer(props) {
   return (
-    <div
-      className={props.isSidebarShow ? "Sidebar sidebarActive" : "Sidebar"}
-    ></div>
+    <div></div>
   );
 }
 export default Footer;
