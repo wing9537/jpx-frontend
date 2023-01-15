@@ -14,6 +14,7 @@ import AdbIcon from "@mui/icons-material/Adb";
 import SearchBar from "./SearchBar";
 import { useSelector } from "react-redux";
 import { getToken } from "../../redux/userSlice";
+import LoginDialog from "../dialog/LoginDialog";
 
 const settings = ["Profile", "Account", "Dashboard", "Logout"];
 
@@ -45,6 +46,7 @@ function Nav() {
 
   return (
     <AppBar position="static">
+      <LoginDialog></LoginDialog>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <AdbIcon sx={{ display: { xs: "none", md: "flex" }, mr: 1 }} />
