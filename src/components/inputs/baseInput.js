@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useFormContext } from "react-hook-form";
 import { useTranslation } from "react-i18next";
 import BaseTextField from "./baseTextField";
+import BasePassword from "./basePassword";
 import BaseSelect from "./baseSelect";
 import BaseRadio from "./baseRadio";
 import BaseCheckbox from "./baseCheckbox";
@@ -59,6 +60,23 @@ function BaseInput({
     case "text":
       return (
         <BaseTextField
+          inputProps={register(name, {
+            required,
+            maxLength,
+            minLength,
+            validate: rules,
+          })}
+          id={`txt-${name}`}
+          label={mandatoryLabel}
+          error={!!error?.type}
+          helperText={error && errorMsg(error)}
+          disabled={formStatus == form.confirm}
+          {...rest}
+        />
+      );
+    case "password":
+      return (
+        <BasePassword
           inputProps={register(name, {
             required,
             maxLength,
