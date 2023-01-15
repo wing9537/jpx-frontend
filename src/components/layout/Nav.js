@@ -11,7 +11,9 @@ import Avatar from "@mui/material/Avatar";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import AdbIcon from "@mui/icons-material/Adb";
-import SearchBar from "../SearchBar";
+import SearchBar from "./SearchBar";
+import { useSelector } from "react-redux";
+import { getToken } from "../../redux/userSlice";
 
 const settings = ["Profile", "Account", "Dashboard", "Logout"];
 
@@ -19,11 +21,14 @@ function Nav() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
 
+  const token = useSelector(getToken);
+
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
   };
   const handleOpenUserMenu = (event) => {
-    setAnchorElUser(event.currentTarget);
+    if (token) { setAnchorElUser(event.currentTarget); }
+    else { openLoginDialog() }
   };
 
   const handleCloseNavMenu = () => {
@@ -32,6 +37,10 @@ function Nav() {
 
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
+  };
+
+  const openLoginDialog = () => {
+
   };
 
   return (
@@ -122,7 +131,7 @@ function Nav() {
                 <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
               </IconButton>
             </Tooltip>
-            <Menu
+            {token && <Menu
               sx={{ mt: "45px" }}
               id="menu-appbar"
               anchorEl={anchorElUser}
@@ -143,7 +152,7 @@ function Nav() {
                   <Typography textAlign="center">{setting}</Typography>
                 </MenuItem>
               ))}
-            </Menu>
+            </Menu>}
           </Box>
         </Toolbar>
       </Container>
