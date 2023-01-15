@@ -16,7 +16,7 @@ const dialogSlice = createSlice({
   },
 });
 
-export const { open, close } = dialogSlice.actions;
+export const { open: openDialog, close: closeDialog } = dialogSlice.actions;
 
 export default dialogSlice.reducer;
 

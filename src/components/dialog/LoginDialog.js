@@ -13,7 +13,7 @@ import { blue } from "@mui/material/colors";
 import { useDispatch, useSelector } from "react-redux";
 
 // self component
-import { close, getDialogStateByName } from "../../redux/dialogSlice";
+import { closeDialog, getDialogStateByName } from "../../redux/dialogSlice";
 
 const emails = ["username@gmail.com", "user02@gmail.com"];
 
@@ -22,7 +22,7 @@ function LoginDialog() {
   const dispatch = useDispatch();
 
   const handleClose = () => {
-    return dispatch(close("login"));
+    return dispatch(closeDialog("login"));
   };
 
   const handleListItemClick = (value) => {

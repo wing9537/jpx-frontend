@@ -16,7 +16,7 @@ import { useSelector, useDispatch } from "react-redux";
 
 import { getToken } from "../../redux/userSlice";
 import LoginDialog from "../dialog/LoginDialog";
-import { open } from "../../redux/dialogSlice";
+import { openDialog } from "../../redux/dialogSlice";
 
 const settings = ["Profile", "Account", "Dashboard", "Logout"];
 
@@ -35,7 +35,7 @@ function Nav() {
     if (token) {
       setAnchorElUser(event.currentTarget);
     } else {
-      dispatch(open("login")); // open login dialog
+      dispatch(openDialog("login")); // open login dialog
     }
   };
 
