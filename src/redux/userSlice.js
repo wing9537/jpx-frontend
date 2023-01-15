@@ -4,7 +4,7 @@ import {
   createAsyncThunk,
 } from "@reduxjs/toolkit";
 
-const defaultValue = { name: "Tommy", token: "" };
+const defaultValue = { name: "", token: "" };
 
 // thunks
 export const doUserLogin = createAsyncThunk("user/login", async (data) => {

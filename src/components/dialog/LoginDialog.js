@@ -1,36 +1,32 @@
-import * as React from 'react';
-import PropTypes from 'prop-types';
-import Button from '@mui/material/Button';
-import Avatar from '@mui/material/Avatar';
-import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
-import ListItemAvatar from '@mui/material/ListItemAvatar';
-import ListItemButton from '@mui/material/ListItemButton';
-import ListItemText from '@mui/material/ListItemText';
-import DialogTitle from '@mui/material/DialogTitle';
-import Dialog from '@mui/material/Dialog';
-import PersonIcon from '@mui/icons-material/Person';
-import AddIcon from '@mui/icons-material/Add';
-import Typography from '@mui/material/Typography';
-import { blue } from '@mui/material/colors';
-import { useDispatch, useSelector } from 'react-redux';
-import { close, getDialogStateByName } from '../../redux/dialogSlice';
+import * as React from "react";
+import Avatar from "@mui/material/Avatar";
+import List from "@mui/material/List";
+import ListItem from "@mui/material/ListItem";
+import ListItemAvatar from "@mui/material/ListItemAvatar";
+import ListItemButton from "@mui/material/ListItemButton";
+import ListItemText from "@mui/material/ListItemText";
+import DialogTitle from "@mui/material/DialogTitle";
+import Dialog from "@mui/material/Dialog";
+import PersonIcon from "@mui/icons-material/Person";
+import AddIcon from "@mui/icons-material/Add";
+import { blue } from "@mui/material/colors";
+import { useDispatch, useSelector } from "react-redux";
 
-const emails = ['username@gmail.com', 'user02@gmail.com'];
+// self component
+import { close, getDialogStateByName } from "../../redux/dialogSlice";
 
+const emails = ["username@gmail.com", "user02@gmail.com"];
 
-
-export default function LoginDialog(props) {
-
+function LoginDialog() {
+  const open = useSelector(getDialogStateByName("login"));
   const dispatch = useDispatch();
 
-  const open = false;
-
   const handleClose = () => {
-    dispatch(close);
+    return dispatch(close("login"));
   };
 
   const handleListItemClick = (value) => {
+    console.log(value);
   };
 
   return (
@@ -39,7 +35,10 @@ export default function LoginDialog(props) {
       <List sx={{ pt: 0 }}>
         {emails.map((email) => (
           <ListItem disableGutters>
-            <ListItemButton onClick={() => handleListItemClick(email)} key={email}>
+            <ListItemButton
+              onClick={() => handleListItemClick(email)}
+              key={email}
+            >
               <ListItemAvatar>
                 <Avatar sx={{ bgcolor: blue[100], color: blue[600] }}>
                   <PersonIcon />
@@ -53,7 +52,7 @@ export default function LoginDialog(props) {
         <ListItem disableGutters>
           <ListItemButton
             autoFocus
-            onClick={() => handleListItemClick('addAccount')}
+            onClick={() => handleListItemClick("addAccount")}
           >
             <ListItemAvatar>
               <Avatar>
@@ -67,3 +66,4 @@ export default function LoginDialog(props) {
     </Dialog>
   );
 }
+export default LoginDialog;
