@@ -28,7 +28,7 @@ function LoginDialog() {
   };
 
   const modelObj = {
-    email: "",
+    username: "",
     password: "",
   };
 
@@ -48,10 +48,10 @@ function LoginDialog() {
         <DialogContentText>Sign in to continue.</DialogContentText>
         <BaseForm mx={0} modelObj={modelObj}>
           <BaseInput
-            name="emailAddress"
+            name="username"
             type="text"
-            label={t("emailAddress")}
-            limit={limit.email}
+            label={t("username")}
+            limit={limit.username}
             sx={{ mx: 0 }}
             fullWidth
           />
