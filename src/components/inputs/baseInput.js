@@ -83,7 +83,7 @@ function BaseInput({
             minLength,
             validate: rules,
           })}
-          id={`txt-${name}`}
+          id={`pwd-${name}`}
           label={mandatoryLabel}
           error={!!error?.type}
           helperText={error && errorMsg(error)}

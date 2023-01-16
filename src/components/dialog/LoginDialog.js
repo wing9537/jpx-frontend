@@ -1,10 +1,11 @@
 import * as React from "react";
-import DialogTitle from "@mui/material/DialogTitle";
-import DialogContent from '@mui/material/DialogContent';
-import DialogContentText from '@mui/material/DialogContentText';
-import Dialog from "@mui/material/Dialog";
+import {
+  Dialog,
+  DialogTitle,
+  DialogContent,
+  DialogContentText,
+} from "@mui/material";
 import { useTranslation } from "react-i18next";
-
 
 import { Link } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
@@ -26,6 +27,11 @@ function LoginDialog() {
     console.log(value);
   };
 
+  const modelObj = {
+    email: "",
+    password: "",
+  };
+
   const limit = {
     email: { min: 5, max: -1 },
     password: { min: 7, max: -1 },
@@ -34,11 +40,13 @@ function LoginDialog() {
   const { t } = useTranslation("example");
 
   return (
-    <Dialog onClose={handleClose} open={open} maxWidth='xs'>
-      <DialogTitle sx={{ fontSize: 25, fontWeight: 'bold', mb: -1 }}>Welcome!</DialogTitle>
+    <Dialog onClose={handleClose} open={open} maxWidth="xs">
+      <DialogTitle sx={{ fontSize: 25, fontWeight: "bold", mb: -1 }}>
+        Welcome!
+      </DialogTitle>
       <DialogContent>
         <DialogContentText>Sign in to continue.</DialogContentText>
-        <BaseForm mx={0} >
+        <BaseForm mx={0} modelObj={modelObj}>
           <BaseInput
             name="emailAddress"
             type="text"
@@ -56,7 +64,12 @@ function LoginDialog() {
             fullWidth
           />
         </BaseForm>
-        <DialogContentText>Don't have a account? <Link underline="hover" href="/sign-up"> Sign up</Link></DialogContentText>
+        <DialogContentText>
+          Don't have a account?
+          <Link underline="hover" href="/sign-up">
+            Sign up
+          </Link>
+        </DialogContentText>
       </DialogContent>
     </Dialog>
   );
