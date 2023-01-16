@@ -1,3 +1,4 @@
+import React, { useState } from "react";
 import {
   TextField,
   InputAdornment,
@@ -17,7 +18,7 @@ function BasePassword({
   helperText = "",
   ...rest
 }) {
-  const [showPassword, setShowPassword] = React.useState(false);
+  const [showPassword, setShowPassword] = useState(false);
 
   const handleClickShowPassword = () => setShowPassword((show) => !show);
 
