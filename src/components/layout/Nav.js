@@ -17,6 +17,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { getToken } from "../../redux/userSlice";
 import LoginDialog from "../dialog/LoginDialog";
 import { openDialog } from "../../redux/dialogSlice";
+import SignUpDialog from "../dialog/SignUpDialog";
 
 const settings = ["Profile", "Account", "Dashboard", "Logout"];
 
@@ -50,6 +51,7 @@ function Nav() {
   return (
     <AppBar position="static">
       <LoginDialog />
+      <SignUpDialog />
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <AdbIcon sx={{ display: { xs: "none", md: "flex" }, mr: 1 }} />

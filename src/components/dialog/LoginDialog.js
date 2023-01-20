@@ -1,11 +1,8 @@
 import * as React from "react";
-import { Dialog, DialogTitle, DialogContent, DialogContentText } from "@mui/material";
+import { Dialog, DialogTitle, DialogContent, DialogContentText, Link } from "@mui/material";
 import { useTranslation } from "react-i18next";
 
-import { Link } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
-
-import SignUpDialog from "./SignUpDialog";
 
 // self component
 import { openDialog, closeDialog, getDialogStateByName } from "../../redux/dialogSlice";
@@ -39,7 +36,6 @@ function LoginDialog() {
 
   return (
     <Dialog onClose={handleClose} open={open} maxWidth="xs">
-      <SignUpDialog />
       <DialogTitle sx={{ fontSize: 25, fontWeight: "bold", mb: -1 }}>Welcome!</DialogTitle>
       <DialogContent>
         <DialogContentText>Sign in to continue.</DialogContentText>
