@@ -1,6 +1,6 @@
 import { createSlice, createSelector } from "@reduxjs/toolkit";
 
-const defaultValue = { login: false };
+const defaultValue = { login: false, signup: false };
 
 // slice - actions & reducers
 const dialogSlice = createSlice({
@@ -23,5 +23,4 @@ export default dialogSlice.reducer;
 // selectors
 export const getDialog = (state) => state.dialog;
 
-export const getDialogStateByName = (name) =>
-  createSelector([getDialog, () => name], (dialog, name) => dialog[name]);
+export const getDialogStateByName = (name) => createSelector([getDialog, () => name], (dialog, name) => dialog[name]);
