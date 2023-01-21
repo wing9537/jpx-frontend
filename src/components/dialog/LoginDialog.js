@@ -1,11 +1,20 @@
 import * as React from "react";
-import { Dialog, DialogTitle, DialogContent, DialogContentText, Link } from "@mui/material";
+import {
+  Dialog,
+  DialogTitle,
+  DialogContent,
+  DialogContentText,
+  Link,
+} from "@mui/material";
 import { useTranslation } from "react-i18next";
-
 import { useDispatch, useSelector } from "react-redux";
 
 // self component
-import { openDialog, closeDialog, getDialogStateByName } from "../../redux/dialogSlice";
+import {
+  openDialog,
+  closeDialog,
+  getDialogStateByName,
+} from "../../redux/dialogSlice";
 import BaseInput from "../inputs/baseInput";
 import BaseForm from "../inputs/baseForm";
 
@@ -28,15 +37,17 @@ function LoginDialog() {
   };
 
   const limit = {
-    username: { min: 7, max: -1 },
-    password: { min: 7, max: -1 },
+    username: { min: 1, max: -1 },
+    password: { min: 1, max: -1 },
   };
 
   const { t } = useTranslation("example");
 
   return (
     <Dialog onClose={handleClose} open={open} maxWidth="xs">
-      <DialogTitle sx={{ fontSize: 25, fontWeight: "bold", mb: -1 }}>Welcome!</DialogTitle>
+      <DialogTitle sx={{ fontSize: 25, fontWeight: "bold", mb: -1 }}>
+        Welcome!
+      </DialogTitle>
       <DialogContent>
         <DialogContentText>Sign in to continue.</DialogContentText>
         <BaseForm mx={0} modelObj={modelObj}>
