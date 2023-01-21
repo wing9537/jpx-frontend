@@ -1,8 +1,4 @@
-import {
-  createSlice,
-  createSelector,
-  createAsyncThunk,
-} from "@reduxjs/toolkit";
+import { createSlice, createSelector, createAsyncThunk } from "@reduxjs/toolkit";
 
 const defaultValue = { name: "", token: "" };
 

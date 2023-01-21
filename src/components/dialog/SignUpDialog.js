@@ -38,13 +38,32 @@ function SignUpDialog() {
     email: { min: 7, max: -1 },
   };
 
+  const onSubmit = () => {};
+
+  const onConfirm = () => {
+    fetch("http://localhost:8080/jpx/user/register", {
+      method: "POST", // or 'PUT'
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(modelObj),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("Success:", modelObj);
+      })
+      .catch((error) => {
+        console.error("Error:", modelObj);
+      });
+  };
+
   const { t } = useTranslation("example");
 
   return (
     <Dialog onClose={handleClose} open={open} maxWidth="sm">
       <DialogTitle sx={{ fontSize: 25, fontWeight: "bold", mb: -1 }}>Sign Up</DialogTitle>
       <DialogContent>
-        <BaseForm mx={0} modelObj={modelObj}>
+        <BaseForm mx={0} modelObj={modelObj} onSubmit={onSubmit} onConfirm={onConfirm}>
           <Grid container spacing={2}>
             <Grid item xs={12} sm={6}>
               <BaseInput
