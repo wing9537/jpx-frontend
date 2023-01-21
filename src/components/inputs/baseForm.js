@@ -7,8 +7,8 @@ import { form } from "../../common/constant";
 
 function BaseForm({
   modelObj = {},
-  onSubmit = () => true,
-  onConfirm = () => true,
+  onSubmit = async () => true,
+  onConfirm = async () => true,
   children,
   ...rest
 }) {
