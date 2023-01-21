@@ -1,17 +1,46 @@
 import * as React from "react";
-import { Grid, Dialog, DialogTitle, DialogContent, DialogContentText, Link } from "@mui/material";
+import {
+  Grid,
+  Dialog,
+  DialogTitle,
+  DialogContent,
+  DialogContentText,
+  Link,
+} from "@mui/material";
 import { useTranslation } from "react-i18next";
-
 import { useDispatch, useSelector } from "react-redux";
 
 // self component
-import { openDialog, closeDialog, getDialogStateByName } from "../../redux/dialogSlice";
+import {
+  openDialog,
+  closeDialog,
+  getDialogStateByName,
+} from "../../redux/dialogSlice";
 import BaseInput from "../inputs/baseInput";
 import BaseForm from "../inputs/baseForm";
 
 function SignUpDialog() {
   const open = useSelector(getDialogStateByName("signup"));
   const dispatch = useDispatch();
+
+  const { t } = useTranslation("example");
+
+  const modelObj = {
+    firstname: "",
+    lastname: "",
+    username: "",
+    password: "",
+    email: "",
+    mobile: "", // TODO: add mobile
+  };
+
+  const limit = {
+    firstname: { min: 2, max: -1 },
+    lastname: { min: 2, max: -1 },
+    username: { min: 7, max: -1 },
+    password: { min: 8, max: 20 },
+    email: { min: 7, max: -1 },
+  };
 
   const handleClose = () => {
     return dispatch(closeDialog("signup"));
@@ -22,48 +51,30 @@ function SignUpDialog() {
     dispatch(openDialog("login"));
   };
 
-  const modelObj = {
-    firstname: "",
-    lastname: "",
-    username: "",
-    password: "",
-    email: "",
-  };
-
-  const limit = {
-    firstname: { min: 2, max: -1 },
-    lastname: { min: 2, max: -1 },
-    username: { min: 7, max: -1 },
-    password: { min: 7, max: -1 },
-    email: { min: 7, max: -1 },
-  };
-
-  const onSubmit = () => {};
-
-  const onConfirm = () => {
-    fetch("http://localhost:8080/jpx/user/register", {
-      method: "POST", // or 'PUT'
+  const onConfirm = (formData) => {
+    fetch("/jpx/user/register", {
+      method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(modelObj),
+      body: JSON.stringify(formData),
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log("Success:", modelObj);
+        console.log("Success:", data);
       })
       .catch((error) => {
-        console.error("Error:", modelObj);
+        console.error("Error:", error);
       });
   };
 
-  const { t } = useTranslation("example");
-
   return (
     <Dialog onClose={handleClose} open={open} maxWidth="sm">
-      <DialogTitle sx={{ fontSize: 25, fontWeight: "bold", mb: -1 }}>Sign Up</DialogTitle>
+      <DialogTitle sx={{ fontSize: 25, fontWeight: "bold", mb: -1 }}>
+        Sign Up
+      </DialogTitle>
       <DialogContent>
-        <BaseForm mx={0} modelObj={modelObj} onSubmit={onSubmit} onConfirm={onConfirm}>
+        <BaseForm mx={0} modelObj={modelObj} onConfirm={onConfirm}>
           <Grid container spacing={2}>
             <Grid item xs={12} sm={6}>
               <BaseInput
@@ -86,7 +97,14 @@ function SignUpDialog() {
               />
             </Grid>
             <Grid item xs={12}>
-              <BaseInput name="email" type="text" label={t("email")} limit={limit.email} sx={{ mx: 0 }} fullWidth />
+              <BaseInput
+                name="email"
+                type="text"
+                label={t("email")}
+                limit={limit.email}
+                sx={{ mx: 0 }}
+                fullWidth
+              />
             </Grid>
             <Grid item xs={12}>
               <BaseInput

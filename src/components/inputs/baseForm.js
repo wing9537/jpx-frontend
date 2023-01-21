@@ -5,7 +5,13 @@ import { Box, Button } from "@mui/material";
 import TaskAltIcon from "@mui/icons-material/TaskAlt";
 import { form } from "../../common/constant";
 
-function BaseForm({ modelObj = {}, onSubmit = () => {}, onConfirm = () => {}, children, ...rest }) {
+function BaseForm({
+  modelObj = {},
+  onSubmit = () => {},
+  onConfirm = () => {},
+  children,
+  ...rest
+}) {
   const methods = useForm({
     mode: "onTouched",
     reValidateMode: "onChange",
@@ -22,7 +28,7 @@ function BaseForm({ modelObj = {}, onSubmit = () => {}, onConfirm = () => {}, ch
   const [formStatus, setFormStatus] = useState(form.edit);
   const { t } = useTranslation("common");
 
-  const submitAction = (data) => {
+  const submitAction = () => {
     console.log("Is Form Submitted.");
     setFormStatus(form.confirm);
     onSubmit();
@@ -31,7 +37,7 @@ function BaseForm({ modelObj = {}, onSubmit = () => {}, onConfirm = () => {}, ch
   const confirmAction = () => {
     console.log("Is Form confirmed.");
     setFormStatus(form.completed);
-    onConfirm();
+    onConfirm(methods.getValues());
   };
 
   const backAction = () => {
@@ -49,7 +55,13 @@ function BaseForm({ modelObj = {}, onSubmit = () => {}, onConfirm = () => {}, ch
 
   return (
     <FormProvider formStatus={formStatus} {...methods}>
-      <Box m={4} component="form" autoComplete="off" onSubmit={methods.handleSubmit(submitAction)} {...rest}>
+      <Box
+        m={4}
+        component="form"
+        autoComplete="off"
+        onSubmit={methods.handleSubmit(submitAction)}
+        {...rest}
+      >
         {formStatus != form.completed && <Box>{children}</Box>}
         {formStatus == form.completed && (
           <Box m={4} textAlign="center">
@@ -60,7 +72,13 @@ function BaseForm({ modelObj = {}, onSubmit = () => {}, onConfirm = () => {}, ch
         )}
         <Box mx={8} display="flex">
           {formStatus == form.completed && (
-            <Button sx={{ mx: "auto" }} color="secondary" size="large" variant="contained" onClick={resetAction}>
+            <Button
+              sx={{ mx: "auto" }}
+              color="secondary"
+              size="large"
+              variant="contained"
+              onClick={resetAction}
+            >
               {t("home")}
             </Button>
           )}
@@ -87,7 +105,13 @@ function BaseForm({ modelObj = {}, onSubmit = () => {}, onConfirm = () => {}, ch
             </Button>
           )}
           {formStatus == form.edit && (
-            <Button sx={{ mx: "auto" }} type="submit" color="info" size="large" variant="contained">
+            <Button
+              sx={{ mx: "auto" }}
+              type="submit"
+              color="info"
+              size="large"
+              variant="contained"
+            >
               {t("submit")}
             </Button>
           )}
