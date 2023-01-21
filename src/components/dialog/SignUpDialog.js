@@ -51,21 +51,15 @@ function SignUpDialog() {
     dispatch(openDialog("login"));
   };
 
-  const onConfirm = (formData) => {
-    fetch("/jpx/user/register", {
+  const onConfirm = async (formData) => {
+    const response = await fetch("/jpx/user/register", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(formData),
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        console.log("Success:", data);
-      })
-      .catch((error) => {
-        console.error("Error:", error);
-      });
+    });
+    return response.ok;
   };
 
   return (

@@ -7,8 +7,8 @@ import { form } from "../../common/constant";
 
 function BaseForm({
   modelObj = {},
-  onSubmit = () => {},
-  onConfirm = () => {},
+  onSubmit = () => true,
+  onConfirm = () => true,
   children,
   ...rest
 }) {
@@ -30,18 +30,20 @@ function BaseForm({
 
   const submitAction = () => {
     console.log("Is Form Submitted.");
-    setFormStatus(form.confirm);
-    onSubmit();
+    if (onSubmit()) {
+      setFormStatus(form.confirm);
+    }
   };
 
   const confirmAction = () => {
-    console.log("Is Form confirmed.");
-    setFormStatus(form.completed);
-    onConfirm(methods.getValues());
+    console.log("Is Form Confirmed.");
+    onConfirm(methods.getValues()).then((isSucceed) => {
+      if (isSucceed) setFormStatus(form.completed);
+    });
   };
 
   const backAction = () => {
-    console.log("Back to form filling.");
+    console.log("Back to form Filling.");
     setFormStatus(form.edit);
   };
 
