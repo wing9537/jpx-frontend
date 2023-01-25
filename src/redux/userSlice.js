@@ -1,11 +1,27 @@
-import { createSlice, createSelector, createAsyncThunk } from "@reduxjs/toolkit";
+import {
+  createSlice,
+  createSelector,
+  createAsyncThunk,
+} from "@reduxjs/toolkit";
 
 const defaultValue = { name: "", token: "" };
 
 // thunks
 export const doUserLogin = createAsyncThunk("user/login", async (data) => {
   // TODO: call api
-  return { name: "Tommy Kwok", token: "1234" };
+  console.log(data);
+  const response = await fetch("jpx/user/login", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(data),
+  });
+  if (response.ok) {
+    //const user = response.json();
+    const user = response.json();
+    return user;
+  }
 });
 
 // slice - actions & reducers

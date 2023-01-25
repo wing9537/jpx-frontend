@@ -52,6 +52,7 @@ function SignUpDialog() {
   };
 
   const onConfirm = async (formData) => {
+    console.log(formData);
     const response = await fetch("/jpx/user/register", {
       method: "POST",
       headers: {
@@ -123,13 +124,13 @@ function SignUpDialog() {
           </Grid>
         </BaseForm>
         <DialogContentText>
-          <Grid container justifyContent="flex-end">
-            <Grid item>
-              <Link underline="hover" onClick={openLogin}>
-                Already have a account? Sign in
-              </Link>
-            </Grid>
-          </Grid>
+          {/* <Grid container justifyContent="flex-end">
+            <Grid item> */}
+          <Link underline="hover" onClick={openLogin}>
+            Already have a account? Sign in
+          </Link>
+          {/* </Grid>
+          </Grid> */}
         </DialogContentText>
       </DialogContent>
     </Dialog>

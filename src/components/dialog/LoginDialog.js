@@ -10,6 +10,7 @@ import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
 
 // self component
+import { doUserLogin } from "../../redux/userSlice";
 import {
   openDialog,
   closeDialog,
@@ -43,6 +44,10 @@ function LoginDialog() {
 
   const { t } = useTranslation("example");
 
+  const onConfirm = async (formData) => {
+    dispatch(doUserLogin(formData));
+  };
+
   return (
     <Dialog onClose={handleClose} open={open} maxWidth="xs">
       <DialogTitle sx={{ fontSize: 25, fontWeight: "bold", mb: -1 }}>
@@ -50,7 +55,7 @@ function LoginDialog() {
       </DialogTitle>
       <DialogContent>
         <DialogContentText>Sign in to continue.</DialogContentText>
-        <BaseForm mx={0} modelObj={modelObj}>
+        <BaseForm mx={0} modelObj={modelObj} onConfirm={onConfirm}>
           <BaseInput
             name="username"
             type="text"
