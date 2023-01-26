@@ -30,7 +30,8 @@ const userSlice = createSlice({
   initialState: defaultValue,
   reducers: {
     logout: (state, action) => {
-      state = defaultValue; // reset to default
+      console.log("logout");
+      return defaultValue;
     },
   },
   extraReducers: (builder) => {

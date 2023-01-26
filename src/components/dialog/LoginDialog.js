@@ -45,7 +45,11 @@ function LoginDialog() {
   const { t } = useTranslation("example");
 
   const onConfirm = async (formData) => {
-    dispatch(doUserLogin(formData));
+    const user = await dispatch(doUserLogin(formData));
+    console.log(user);
+    if (user != null) {
+      dispatch(closeDialog("login"));
+    }
   };
 
   return (

@@ -8,13 +8,12 @@ import Menu from "@mui/material/Menu";
 import MenuIcon from "@mui/icons-material/Menu";
 import Container from "@mui/material/Container";
 import Avatar from "@mui/material/Avatar";
-import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import AdbIcon from "@mui/icons-material/Adb";
 import SearchBar from "./SearchBar";
 import { useSelector, useDispatch } from "react-redux";
 
-import { getToken } from "../../redux/userSlice";
+import { getToken, logout } from "../../redux/userSlice";
 import LoginDialog from "../dialog/LoginDialog";
 import { openDialog } from "../../redux/dialogSlice";
 import SignUpDialog from "../dialog/SignUpDialog";
@@ -46,6 +45,10 @@ function Nav() {
 
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
+  };
+
+  const handleLogout = () => {
+    dispatch(logout());
   };
 
   return (
@@ -153,11 +156,21 @@ function Nav() {
                 open={Boolean(anchorElUser)}
                 onClose={handleCloseUserMenu}
               >
-                {settings.map((setting) => (
-                  <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                    <Typography textAlign="center">{setting}</Typography>
-                  </MenuItem>
-                ))}
+                {settings.map((setting, index, array) => {
+                  if (array.length - 1 === index) {
+                    return (
+                      <MenuItem key={setting} onClick={handleLogout}>
+                        <Typography textAlign="center">{setting}</Typography>
+                      </MenuItem>
+                    );
+                  } else {
+                    return (
+                      <MenuItem key={setting} onClick={handleCloseUserMenu}>
+                        <Typography textAlign="center">{setting}</Typography>
+                      </MenuItem>
+                    );
+                  }
+                })}
               </Menu>
             )}
           </Box>
