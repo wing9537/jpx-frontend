@@ -65,12 +65,12 @@ function SignUpDialog() {
 
   return (
     <Dialog onClose={handleClose} open={open} maxWidth="sm">
-      <DialogTitle sx={{ fontSize: 25, fontWeight: "bold", mb: -1 }}>
+      <DialogTitle sx={{ fontSize: 25, fontWeight: "bold", mb: -3 }}>
         Sign Up
       </DialogTitle>
       <DialogContent>
         <BaseForm mx={0} modelObj={modelObj} onConfirm={onConfirm}>
-          <Grid container spacing={2}>
+          <Grid container spacing={1}>
             <Grid item xs={12} sm={6}>
               <BaseInput
                 name="firstname"
@@ -95,6 +95,7 @@ function SignUpDialog() {
               <BaseInput
                 name="email"
                 type="text"
+                pattern="/^[w-.]+@([w-]+.)+[w-]{2,4}$/"
                 label={t("email")}
                 limit={limit.email}
                 sx={{ mx: 0 }}
