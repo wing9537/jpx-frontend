@@ -65,6 +65,9 @@ function SignUpDialog() {
     return response.ok;
   };
 
+  const isPasswordMatch = (_, values) =>
+    values.password == values.confirmPassword || "Passwords not match";
+
   return (
     <Dialog onClose={handleClose} open={open} maxWidth="sm">
       <DialogTitle sx={{ fontSize: 25, fontWeight: "bold", mb: -3 }}>
@@ -130,6 +133,7 @@ function SignUpDialog() {
                 type="password"
                 label={t("confirmPassword")}
                 limit={limit.password}
+                rules={isPasswordMatch}
                 sx={{ mx: 0 }}
                 fullWidth
               />
