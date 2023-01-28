@@ -17,6 +17,7 @@ function BaseInput({
   limit = { min: -1, max: -1 },
   rules = {},
   options = {},
+  pattern = "",
   ...rest
 }) {
   const {
@@ -65,6 +66,7 @@ function BaseInput({
             maxLength,
             minLength,
             validate: rules,
+            pattern,
           })}
           id={`txt-${name}`}
           label={mandatoryLabel}
@@ -82,6 +84,7 @@ function BaseInput({
             maxLength,
             minLength,
             validate: rules,
+            pattern,
           })}
           id={`pwd-${name}`}
           label={mandatoryLabel}

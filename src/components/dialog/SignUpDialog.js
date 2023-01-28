@@ -34,6 +34,8 @@ function SignUpDialog() {
     mobile: "", // TODO: add mobile
   };
 
+  const emailRegex = /^\b[A-Z0-9._%-]+@[A-Z0-9.-]+\.[A-Z]{2,4}\b$/i;
+
   const limit = {
     firstname: { min: 2, max: -1 },
     lastname: { min: 2, max: -1 },
@@ -95,7 +97,7 @@ function SignUpDialog() {
               <BaseInput
                 name="email"
                 type="text"
-                pattern="/^[w-.]+@([w-]+.)+[w-]{2,4}$/"
+                pattern={emailRegex}
                 label={t("email")}
                 limit={limit.email}
                 sx={{ mx: 0 }}
@@ -117,6 +119,16 @@ function SignUpDialog() {
                 name="password"
                 type="password"
                 label={t("password")}
+                limit={limit.password}
+                sx={{ mx: 0 }}
+                fullWidth
+              />
+            </Grid>
+            <Grid item xs={12}>
+              <BaseInput
+                name="confirmPassword"
+                type="password"
+                label={t("confirmPassword")}
                 limit={limit.password}
                 sx={{ mx: 0 }}
                 fullWidth
