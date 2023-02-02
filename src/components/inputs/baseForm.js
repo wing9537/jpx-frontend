@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { useForm, FormProvider } from "react-hook-form";
 import { Box, Button } from "@mui/material";
@@ -9,6 +9,7 @@ function BaseForm({
   modelObj = {},
   onSubmit = async () => true,
   onConfirm = async () => true,
+  refreshModel, // refresh parent modelObj without update UI
   children,
   ...rest
 }) {
@@ -58,7 +59,13 @@ function BaseForm({
     methods.reset(modelObj);
   };
 
-  console.log("modelObj", methods.watch());
+  useEffect(() => {
+    const subscription = methods.watch((value, { name, type }) => {
+      console.log("modelObj", value, name, type);
+      if (refreshModel) refreshModel(value);
+    });
+    return () => subscription.unsubscribe();
+  }, [methods.watch]);
 
   return (
     <FormProvider formStatus={formStatus} {...methods}>
