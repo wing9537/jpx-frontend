@@ -27,13 +27,13 @@
     "password": "密碼",
     "confirmPassword": "確認密碼",
     "login": {
-      "title": "歡迎!",
+      "title": "歡迎！",
       "subTitle": "登錄以繼續",
-      "link": "沒有帳號？ 註冊"
+      "link": "沒有帳號？註冊"
     },
     "signup": {
       "title": "註冊",
-      "link": "已有帳號？ 登入"
+      "link": "已有帳號？登入"
     },
     "validate": {
       "passwordNotMatch": "密碼不匹配"
