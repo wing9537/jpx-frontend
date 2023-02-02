@@ -1,8 +1,12 @@
 import moment from "moment";
-import { date } from "./constant";
+import { date, regex } from "./constant";
 
 const isValidDate = (dateStr, format = date.format) => {
   return moment(dateStr, format, true).isValid();
 };
 
-export { isValidDate };
+const isValidEmail = (str) => {
+  return regex.email.text(str);
+};
+
+export { isValidDate, isValidEmail };

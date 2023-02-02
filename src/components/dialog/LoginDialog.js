@@ -20,7 +20,7 @@ import BaseInput from "../inputs/baseInput";
 import BaseForm from "../inputs/baseForm";
 
 function LoginDialog() {
-  const open = useSelector(getDialogStateByName("login"));
+  const isOpen = useSelector(getDialogStateByName("login"));
   const dispatch = useDispatch();
 
   const openSignUp = () => {
@@ -47,13 +47,11 @@ function LoginDialog() {
   const onConfirm = async (formData) => {
     const user = await dispatch(doUserLogin(formData));
     console.log(user);
-    if (user != null) {
-      dispatch(closeDialog("login"));
-    }
+    if (user != null) dispatch(closeDialog("login"));
   };
 
   return (
-    <Dialog onClose={handleClose} open={open} maxWidth="xs">
+    <Dialog onClose={handleClose} open={isOpen} maxWidth="xs">
       <DialogTitle sx={{ fontSize: 25, fontWeight: "bold", mb: -1 }}>
         Welcome!
       </DialogTitle>

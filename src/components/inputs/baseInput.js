@@ -17,7 +17,6 @@ function BaseInput({
   limit = { min: -1, max: -1 },
   rules = {},
   options = {},
-  pattern = "",
   ...rest
 }) {
   const {

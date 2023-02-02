@@ -18,9 +18,10 @@ import {
 } from "../../redux/dialogSlice";
 import BaseInput from "../inputs/baseInput";
 import BaseForm from "../inputs/baseForm";
+import { isValidEmail } from "../../common/utils";
 
 function SignUpDialog() {
-  const open = useSelector(getDialogStateByName("signup"));
+  const isOpen = useSelector(getDialogStateByName("signup"));
   const dispatch = useDispatch();
 
   const { t } = useTranslation("example");
@@ -33,8 +34,6 @@ function SignUpDialog() {
     email: "",
     mobile: "", // TODO: add mobile
   };
-
-  const emailRegex = /^\b[A-Z0-9._%-]+@[A-Z0-9.-]+\.[A-Z]{2,4}\b$/i;
 
   const limit = {
     firstname: { min: 2, max: -1 },
@@ -65,11 +64,12 @@ function SignUpDialog() {
     return response.ok;
   };
 
-  const isPasswordMatch = (_, values) =>
-    values.password == values.confirmPassword || "Passwords not match";
+  const isPasswordMatch = (_, values) => {
+    return values.password == values.confirmPassword || "Passwords not match";
+  };
 
   return (
-    <Dialog onClose={handleClose} open={open} maxWidth="sm">
+    <Dialog onClose={handleClose} open={isOpen} maxWidth="sm">
       <DialogTitle sx={{ fontSize: 25, fontWeight: "bold", mb: -3 }}>
         Sign Up
       </DialogTitle>
@@ -100,9 +100,9 @@ function SignUpDialog() {
               <BaseInput
                 name="email"
                 type="text"
-                pattern={emailRegex}
                 label={t("email")}
                 limit={limit.email}
+                rules={{ pattern: isValidEmail }}
                 sx={{ mx: 0 }}
                 fullWidth
               />
@@ -141,13 +141,9 @@ function SignUpDialog() {
           </Grid>
         </BaseForm>
         <DialogContentText>
-          {/* <Grid container justifyContent="flex-end">
-            <Grid item> */}
           <Link underline="hover" onClick={openLogin}>
             Already have a account? Sign in
           </Link>
-          {/* </Grid>
-          </Grid> */}
         </DialogContentText>
       </DialogContent>
     </Dialog>
