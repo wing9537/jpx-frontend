@@ -42,7 +42,7 @@ function LoginDialog() {
     password: { min: 1, max: -1 },
   };
 
-  const { t } = useTranslation("example");
+  const { t } = useTranslation("dialog");
 
   const onConfirm = async (formData) => {
     const user = await dispatch(doUserLogin(formData));
@@ -53,10 +53,10 @@ function LoginDialog() {
   return (
     <Dialog onClose={handleClose} open={isOpen} maxWidth="xs">
       <DialogTitle sx={{ fontSize: 25, fontWeight: "bold", mb: -1 }}>
-        Welcome!
+        {t("login.title")}
       </DialogTitle>
       <DialogContent>
-        <DialogContentText>Sign in to continue.</DialogContentText>
+        <DialogContentText>{t("login.subTitle")}</DialogContentText>
         <BaseForm mx={0} modelObj={modelObj} onConfirm={onConfirm}>
           <BaseInput
             name="username"
@@ -76,9 +76,8 @@ function LoginDialog() {
           />
         </BaseForm>
         <DialogContentText>
-          Don't have a account?
           <Link underline="hover" onClick={openSignUp}>
-            Sign up
+            {t("login.link")}
           </Link>
         </DialogContentText>
       </DialogContent>

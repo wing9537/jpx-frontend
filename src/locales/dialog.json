@@ -1,0 +1,42 @@
+{
+  "en": {
+    "firstname": "Firstname",
+    "lastname": "Lastname",
+    "email": "Email",
+    "username": "Username",
+    "password": "Password",
+    "confirmPassword": "Confirm Password",
+    "login": {
+      "title": "Welcome!",
+      "subTitle": "Sign in to continue.",
+      "link": "Don't have a account? Sign up"
+    },
+    "signup": {
+      "title": "Sign Up",
+      "link": "Already have a account? Sign in"
+    },
+    "validate": {
+      "pwdNotMatch": "Passwords do not match"
+    }
+  },
+  "zh": {
+    "firstname": "名字",
+    "lastname": "姓氏",
+    "email": "電子郵件",
+    "username": "帳號",
+    "password": "密碼",
+    "confirmPassword": "確認密碼",
+    "login": {
+      "title": "歡迎!",
+      "subTitle": "登錄以繼續",
+      "link": "沒有帳號？ 註冊"
+    },
+    "signup": {
+      "title": "註冊",
+      "link": "已有帳號？ 登入"
+    },
+    "validate": {
+      "passwordNotMatch": "密碼不匹配"
+    }
+  }
+}

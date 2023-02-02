@@ -24,7 +24,7 @@ function SignUpDialog() {
   const isOpen = useSelector(getDialogStateByName("signup"));
   const dispatch = useDispatch();
 
-  const { t } = useTranslation("example");
+  const { t } = useTranslation("dialog");
 
   const modelObj = {
     firstname: "",
@@ -65,13 +65,15 @@ function SignUpDialog() {
   };
 
   const isPasswordMatch = (_, values) => {
-    return values.password == values.confirmPassword || "Passwords not match";
+    return (
+      values.password == values.confirmPassword || t("validate.pwdNotMatch")
+    );
   };
 
   return (
     <Dialog onClose={handleClose} open={isOpen} maxWidth="sm">
       <DialogTitle sx={{ fontSize: 25, fontWeight: "bold", mb: -3 }}>
-        Sign Up
+        {t("signup.title")}
       </DialogTitle>
       <DialogContent>
         <BaseForm mx={0} modelObj={modelObj} onConfirm={onConfirm}>
@@ -142,7 +144,7 @@ function SignUpDialog() {
         </BaseForm>
         <DialogContentText>
           <Link underline="hover" onClick={openLogin}>
-            Already have a account? Sign in
+            {t("signup.link")}
           </Link>
         </DialogContentText>
       </DialogContent>

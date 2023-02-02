@@ -4,12 +4,6 @@
     "uncontrolled": "Without Control",
     "customValid": "Custom Validation",
     "sampleText": "Text Field",
-    "firstname": "Firstname",
-    "lastname": "Lastname",
-    "email": "Email",
-    "username": "Username",
-    "password": "Password",
-    "confirmPassword": "Confirm Password",
     "sampleSelect": "Dropdown List",
     "sampleRadio": "Radio Group",
     "sampleCheckbox": "Checkbox Group",
@@ -23,14 +17,11 @@
       "exact": "Please input exact content: \"{{text}}\"."
     }
   },
-  "tc": {
+  "zh": {
     "title": "React 簡易表單",
     "uncontrolled": "不受控制",
     "customValid": "自定義驗證",
     "sampleText": "文字輸入",
-    "username": "帳號輸入",
-    "password": "密碼輸入",
-    "confirmPassword": "確認密碼",
     "sampleSelect": "下拉列表",
     "sampleRadio": "單選按鈕",
     "sampleCheckbox": "複選框",

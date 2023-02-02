@@ -7,7 +7,7 @@
     "max": "The maximum value of this field is {{limit}}.",
     "min": "The minimum value of this field is {{limit}}."
   },
-  "tc": {
+  "zh": {
     "required": "此項必須填寫",
     "pattern": "請輸入一個有效的值",
     "maxLength": "此項最多需要填寫{{limit}}個字",

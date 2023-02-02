@@ -5,6 +5,8 @@ import { initReactI18next } from "react-i18next";
 import common from "./locales/common.json";
 import errorMsg from "./locales/errorMsg.json";
 import example from "./locales/example.json";
+import layout from "./locales/layout.json";
+import dialog from "./locales/dialog.json";
 
 // the translations
 // (tip move them in a JSON file and import them,
@@ -14,11 +16,15 @@ const resources = {
     common: common.en,
     errorMsg: errorMsg.en,
     example: example.en,
+    layout: layout.en,
+    dialog: dialog.en,
   },
-  tc: {
-    common: common.tc,
-    errorMsg: errorMsg.tc,
-    example: example.tc,
+  zh: {
+    common: common.zh,
+    errorMsg: errorMsg.zh,
+    example: example.zh,
+    layout: layout.zh,
+    dialog: dialog.zh,
   },
 };
 
@@ -29,7 +35,7 @@ i18n
     lng: "en", // language to use, more information here: https://www.i18next.com/overview/configuration-options#languages-namespaces-resources
     // you can use the i18n.changeLanguage function to change the language manually: https://www.i18next.com/overview/api#changelanguage
     // if you're using a language detector, do not define the lng option
-    supportedLngs: ["en", "tc"],
+    supportedLngs: ["en", "zh"],
     interpolation: {
       escapeValue: false, // react already safes from xss
     },

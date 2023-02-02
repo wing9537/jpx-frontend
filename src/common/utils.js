@@ -6,7 +6,7 @@ const isValidDate = (dateStr, format = date.format) => {
 };
 
 const isValidEmail = (str) => {
-  return regex.email.text(str);
+  return regex.email.test(str);
 };
 
 export { isValidDate, isValidEmail };

@@ -1,31 +1,37 @@
 import React, { useState } from "react";
-import AppBar from "@mui/material/AppBar";
-import Box from "@mui/material/Box";
-import Toolbar from "@mui/material/Toolbar";
-import IconButton from "@mui/material/IconButton";
-import Typography from "@mui/material/Typography";
-import Menu from "@mui/material/Menu";
+import {
+  Box,
+  Container,
+  AppBar,
+  Toolbar,
+  Button,
+  IconButton,
+  Typography,
+  Menu,
+  Avatar,
+  MenuItem,
+} from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
-import Container from "@mui/material/Container";
-import Avatar from "@mui/material/Avatar";
-import MenuItem from "@mui/material/MenuItem";
 import AdbIcon from "@mui/icons-material/Adb";
-import SearchBar from "./SearchBar";
 import { useSelector, useDispatch } from "react-redux";
+import { useTranslation } from "react-i18next";
 
-import { getToken, logout } from "../../redux/userSlice";
-import LoginDialog from "../dialog/LoginDialog";
+import { getToken, getUserName, logout } from "../../redux/userSlice";
 import { openDialog } from "../../redux/dialogSlice";
+import LoginDialog from "../dialog/LoginDialog";
 import SignUpDialog from "../dialog/SignUpDialog";
+import SearchBar from "./SearchBar";
 
 const settings = ["Profile", "Account", "Dashboard", "Logout"];
 
 function Nav() {
+  const { t, i18n } = useTranslation("layout");
   const [anchorElNav, setAnchorElNav] = useState(null);
   const [anchorElUser, setAnchorElUser] = useState(null);
 
   const dispatch = useDispatch();
   const token = useSelector(getToken);
+  const userName = useSelector(getUserName);
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -51,6 +57,11 @@ function Nav() {
     dispatch(logout());
   };
 
+  const changeLanguage = () => {
+    return i18n.language == "en"
+      ? i18n.changeLanguage("zh")
+      : i18n.changeLanguage("en");
+  };
   return (
     <AppBar position="static">
       <LoginDialog />
@@ -73,7 +84,7 @@ function Nav() {
               textDecoration: "none",
             }}
           >
-            MANGA
+            {t("title")}
           </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
@@ -104,11 +115,7 @@ function Nav() {
               sx={{
                 display: { xs: "block", md: "none" },
               }}
-              PaperProps={{
-                sx: {
-                  width: "100%",
-                },
-              }}
+              PaperProps={{ sx: { width: "100%" } }}
             >
               <SearchBar></SearchBar>
             </Menu>
@@ -130,14 +137,19 @@ function Nav() {
               textDecoration: "none",
             }}
           >
-            LOGO
+            {t("title")}
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
             <SearchBar></SearchBar>
           </Box>
           <Box sx={{ flexGrow: 0 }}>
+            <Button onClick={changeLanguage} color="inherit" disableRipple>
+              <Typography variant="h6">
+                {i18n.language == "en" ? "EN" : "中"}
+              </Typography>
+            </Button>
             <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-              <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+              <Avatar>{userName.toUpperCase()[0]}</Avatar>
             </IconButton>
             {token && (
               <Menu
