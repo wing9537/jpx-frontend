@@ -8,7 +8,6 @@ const defaultValue = { name: "", token: "" };
 
 // thunks
 export const doUserLogin = createAsyncThunk("user/login", async (data) => {
-  // TODO: call api
   console.log(data);
   const response = await fetch("jpx/user/login", {
     method: "POST",
@@ -18,9 +17,7 @@ export const doUserLogin = createAsyncThunk("user/login", async (data) => {
     body: JSON.stringify(data),
   });
   if (response.ok) {
-    //const user = response.json();
-    const user = response.json();
-    return user;
+    return response.json();
   }
 });
 

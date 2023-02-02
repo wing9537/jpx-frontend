@@ -1,0 +1,8 @@
+get form state outside
+display backend error message on screen with toast message
+
+custom hook for wrapping the fetch method
+show a loading animation when fetching data
+
+save token in cookies
+load user info if cookies exists

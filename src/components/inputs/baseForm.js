@@ -26,19 +26,24 @@ function BaseForm({
   });
 
   const [formStatus, setFormStatus] = useState(form.edit);
+  const [isLoading, setIsLoading] = useState(false);
   const { t } = useTranslation("common");
 
   const submitAction = () => {
     console.log("Is Form Submitted.");
-    if (onSubmit()) {
-      setFormStatus(form.confirm);
-    }
+    setIsLoading(true);
+    onSubmit(methods.getValues()).then((isSucceed) => {
+      if (isSucceed) setFormStatus(form.confirm);
+      setIsLoading(false);
+    });
   };
 
   const confirmAction = () => {
     console.log("Is Form Confirmed.");
+    setIsLoading(true);
     onConfirm(methods.getValues()).then((isSucceed) => {
       if (isSucceed) setFormStatus(form.completed);
+      setIsLoading(false);
     });
   };
 
@@ -80,6 +85,7 @@ function BaseForm({
               size="large"
               variant="contained"
               onClick={resetAction}
+              disabled={isLoading}
             >
               {t("home")}
             </Button>
@@ -91,6 +97,7 @@ function BaseForm({
               size="large"
               variant="contained"
               onClick={backAction}
+              disabled={isLoading}
             >
               {t("back")}
             </Button>
@@ -102,6 +109,7 @@ function BaseForm({
               size="large"
               variant="contained"
               onClick={confirmAction}
+              disabled={isLoading}
             >
               {t("confirm")}
             </Button>
@@ -113,6 +121,7 @@ function BaseForm({
               color="info"
               size="large"
               variant="contained"
+              disabled={isLoading}
             >
               {t("submit")}
             </Button>

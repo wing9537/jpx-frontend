@@ -44,7 +44,7 @@ function LoginDialog() {
 
   const { t } = useTranslation("dialog");
 
-  const onConfirm = async (formData) => {
+  const onSubmit = async (formData) => {
     const user = await dispatch(doUserLogin(formData));
     console.log(user);
     if (user != null) dispatch(closeDialog("login"));
@@ -57,7 +57,7 @@ function LoginDialog() {
       </DialogTitle>
       <DialogContent>
         <DialogContentText>{t("login.subTitle")}</DialogContentText>
-        <BaseForm mx={0} modelObj={modelObj} onConfirm={onConfirm}>
+        <BaseForm mx={0} modelObj={modelObj} onSubmit={onSubmit}>
           <BaseInput
             name="username"
             type="text"
