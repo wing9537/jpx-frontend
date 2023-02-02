@@ -18,7 +18,7 @@ import {
 } from "../../redux/dialogSlice";
 import BaseInput from "../inputs/baseInput";
 import BaseForm from "../inputs/baseForm";
-import { isValidEmail } from "../../common/utils";
+import { isValidEmail, isValidMobile } from "../../common/utils";
 
 function SignUpDialog() {
   const isOpen = useSelector(getDialogStateByName("signup"));
@@ -31,8 +31,9 @@ function SignUpDialog() {
     lastname: "",
     username: "",
     password: "",
+    confirmPassword: "",
     email: "",
-    mobile: "", // TODO: add mobile
+    mobile: "",
   };
 
   const limit = {
@@ -40,7 +41,9 @@ function SignUpDialog() {
     lastname: { min: 2, max: -1 },
     username: { min: 7, max: -1 },
     password: { min: 8, max: 20 },
+    confirmPassword: { min: 1, max: -1 },
     email: { min: 7, max: -1 },
+    mobile: { min: 0, max: 8 },
   };
 
   const handleClose = () => {
@@ -98,13 +101,24 @@ function SignUpDialog() {
                 fullWidth
               />
             </Grid>
-            <Grid item xs={12}>
+            <Grid item xs={12} sm={6}>
               <BaseInput
                 name="email"
                 type="text"
                 label={t("email")}
                 limit={limit.email}
                 rules={{ pattern: isValidEmail }}
+                sx={{ mx: 0 }}
+                fullWidth
+              />
+            </Grid>
+            <Grid item xs={12} sm={6}>
+              <BaseInput
+                name="mobile"
+                type="text"
+                label={t("mobile")}
+                limit={limit.mobile}
+                rules={{ pattern: isValidMobile }}
                 sx={{ mx: 0 }}
                 fullWidth
               />
@@ -134,7 +148,7 @@ function SignUpDialog() {
                 name="confirmPassword"
                 type="password"
                 label={t("confirmPassword")}
-                limit={limit.password}
+                limit={limit.confirmPassword}
                 rules={isPasswordMatch}
                 sx={{ mx: 0 }}
                 fullWidth

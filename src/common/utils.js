@@ -9,4 +9,8 @@ const isValidEmail = (str) => {
   return regex.email.test(str);
 };
 
-export { isValidDate, isValidEmail };
+const isValidMobile = (str) => {
+  return regex.mobile.test(str);
+};
+
+export { isValidDate, isValidEmail, isValidMobile };
