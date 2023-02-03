@@ -7,19 +7,25 @@ import {
 const defaultValue = { name: "", token: "" };
 
 // thunks
-export const doUserLogin = createAsyncThunk("user/login", async (data) => {
-  console.log(data);
-  const response = await fetch("jpx/user/login", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(data),
-  });
-  if (response.ok) {
-    return response.json();
+export const doUserLogin = createAsyncThunk(
+  "user/login",
+  async (data, { rejectWithValue }) => {
+    console.log(data);
+
+    const response = await fetch("jpx/user/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    });
+    if (response.ok) {
+      return response.json();
+    } else {
+      return rejectWithValue(response.ok);
+    }
   }
-});
+);
 
 // slice - actions & reducers
 const userSlice = createSlice({
