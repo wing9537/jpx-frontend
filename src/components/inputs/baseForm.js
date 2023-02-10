@@ -3,7 +3,7 @@ import { useTranslation } from "react-i18next";
 import { useForm, FormProvider } from "react-hook-form";
 import { Box, Button } from "@mui/material";
 import TaskAltIcon from "@mui/icons-material/TaskAlt";
-import { form } from "../../common/constant";
+import { FORM } from "../../common/constant";
 
 function BaseForm({
   modelObj = {},
@@ -26,7 +26,7 @@ function BaseForm({
     delayError: undefined,
   });
 
-  const [formStatus, setFormStatus] = useState(form.edit);
+  const [formStatus, setFormStatus] = useState(FORM.edit);
   const [isLoading, setIsLoading] = useState(false);
   const { t } = useTranslation("common");
 
@@ -34,7 +34,7 @@ function BaseForm({
     console.log("Is Form Submitted.");
     setIsLoading(true);
     onSubmit(methods.getValues()).then((isSucceed) => {
-      if (isSucceed) setFormStatus(form.confirm);
+      if (isSucceed) setFormStatus(FORM.confirm);
       setIsLoading(false);
     });
   };
@@ -43,19 +43,19 @@ function BaseForm({
     console.log("Is Form Confirmed.");
     setIsLoading(true);
     onConfirm(methods.getValues()).then((isSucceed) => {
-      if (isSucceed) setFormStatus(form.completed);
+      if (isSucceed) setFormStatus(FORM.completed);
       setIsLoading(false);
     });
   };
 
   const backAction = () => {
     console.log("Back to form Filling.");
-    setFormStatus(form.edit);
+    setFormStatus(FORM.edit);
   };
 
   const resetAction = () => {
     console.log("Is Form reset");
-    setFormStatus(form.edit);
+    setFormStatus(FORM.edit);
     methods.reset(modelObj);
   };
 
@@ -76,8 +76,8 @@ function BaseForm({
         onSubmit={methods.handleSubmit(submitAction)}
         {...rest}
       >
-        {formStatus != form.completed && <Box>{children}</Box>}
-        {formStatus == form.completed && (
+        {formStatus != FORM.completed && <Box>{children}</Box>}
+        {formStatus == FORM.completed && (
           <Box m={4} textAlign="center">
             <br />
             <h1>{t("title")}</h1>
@@ -85,7 +85,7 @@ function BaseForm({
           </Box>
         )}
         <Box mx={8} display="flex">
-          {formStatus == form.completed && (
+          {formStatus == FORM.completed && (
             <Button
               sx={{ mx: "auto" }}
               color="secondary"
@@ -97,7 +97,7 @@ function BaseForm({
               {t("home")}
             </Button>
           )}
-          {formStatus == form.confirm && (
+          {formStatus == FORM.confirm && (
             <Button
               sx={{ ml: "auto", mr: "10px" }}
               color="secondary"
@@ -109,7 +109,7 @@ function BaseForm({
               {t("back")}
             </Button>
           )}
-          {formStatus == form.confirm && (
+          {formStatus == FORM.confirm && (
             <Button
               sx={{ ml: "10px", mr: "auto" }}
               color="success"
@@ -121,7 +121,7 @@ function BaseForm({
               {t("confirm")}
             </Button>
           )}
-          {formStatus == form.edit && (
+          {formStatus == FORM.edit && (
             <Button
               sx={{ mx: "auto" }}
               type="submit"

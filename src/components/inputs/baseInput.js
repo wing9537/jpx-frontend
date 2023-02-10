@@ -7,7 +7,7 @@ import BaseSelect from "./baseSelect";
 import BaseRadio from "./baseRadio";
 import BaseCheckbox from "./baseCheckbox";
 import BaseDatePicker from "./baseDatePicker";
-import { form } from "../../common/constant";
+import { FORM } from "../../common/constant";
 import { isValidDate } from "../../common/utils";
 
 function BaseInput({
@@ -70,7 +70,7 @@ function BaseInput({
           label={mandatoryLabel}
           error={!!error?.type}
           helperText={error && errorMsg(error)}
-          disabled={formStatus == form.confirm}
+          disabled={formStatus == FORM.confirm}
           {...rest}
         />
       );
@@ -87,7 +87,7 @@ function BaseInput({
           label={mandatoryLabel}
           error={!!error?.type}
           helperText={error && errorMsg(error)}
-          disabled={formStatus == form.confirm}
+          disabled={formStatus == FORM.confirm}
           {...rest}
         />
       );
@@ -104,7 +104,7 @@ function BaseInput({
           options={options}
           error={!!error?.type}
           helperText={error && errorMsg(error)}
-          disabled={formStatus == form.confirm}
+          disabled={formStatus == FORM.confirm}
           {...rest}
         />
       );
@@ -121,7 +121,7 @@ function BaseInput({
           options={options}
           error={!!error?.type}
           helperText={error && errorMsg(error)}
-          disabled={formStatus == form.confirm}
+          disabled={formStatus == FORM.confirm}
           {...rest}
         />
       );
@@ -138,7 +138,7 @@ function BaseInput({
           options={options}
           error={!!error?.type}
           helperText={error && errorMsg(error)}
-          disabled={formStatus == form.confirm}
+          disabled={formStatus == FORM.confirm}
           {...rest}
         />
       );
@@ -156,7 +156,7 @@ function BaseInput({
           label={mandatoryLabel}
           error={!!error?.type}
           helperText={error && errorMsg(error)}
-          disabled={formStatus == form.confirm}
+          disabled={formStatus == FORM.confirm}
           {...rest}
         />
       );

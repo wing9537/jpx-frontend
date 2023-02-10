@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Box, TextField } from "@mui/material";
 import { DatePicker } from "@mui/x-date-pickers";
-import { date } from "../../common/constant";
+import { DATE } from "../../common/constant";
 
 /**
  * @mui DatePicker API
@@ -23,7 +23,7 @@ function BaseDatePicker({
       inputProps.onChange({
         target: {
           name: inputProps.name,
-          value: value || obj?.format(date.format) || "",
+          value: value || obj?.format(DATE.format) || "",
         },
       });
     }
@@ -34,8 +34,8 @@ function BaseDatePicker({
       <DatePicker
         value={dateObj}
         onChange={handleChange}
-        mask={date.mask}
-        inputFormat={date.format}
+        mask={DATE.mask}
+        inputFormat={DATE.format}
         inputRef={inputProps.ref}
         renderInput={(params) => (
           <TextField

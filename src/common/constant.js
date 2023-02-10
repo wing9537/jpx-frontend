@@ -1,17 +1,17 @@
-const form = {
+const FORM = {
   edit: "editing",
   confirm: "confirm",
   completed: "completed",
 };
 
-const date = {
+const DATE = {
   format: "DD/MM/YYYY",
   mask: "__/__/____",
 };
 
-const regex = {
+const REGEX = {
   email: /^\b[A-Z0-9._%-]+@[A-Z0-9.-]+\.[A-Z]{2,4}\b$/i,
   mobile: /^$|^[0-9]{8}$/,
 };
 
-export { form, date, regex };
+export { FORM, DATE, REGEX };
