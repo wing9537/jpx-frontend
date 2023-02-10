@@ -1,8 +1,7 @@
-get form state outside
-display backend error message on screen with toast message
+[v] get form state outside
+[ ] display backend error message on corrsponding inputs
+[ ] custom hook for wrapping the fetch method
+[ ] show a loading animation when fetching data
 
-custom hook for wrapping the fetch method
-show a loading animation when fetching data
-
-save token in cookies
-load user info if cookies exists
+[ ] save token in cookies
+[ ] load user info if cookies exists

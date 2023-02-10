@@ -47,7 +47,11 @@ function LoginDialog() {
   const onSubmit = async (formData) => {
     const user = await dispatch(doUserLogin(formData));
     console.log(user);
-    if (user != null) dispatch(closeDialog("login"));
+    if (user) {
+      dispatch(closeDialog("login"));
+    } else {
+      // TODO: show error
+    }
   };
 
   return (

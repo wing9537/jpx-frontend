@@ -22,7 +22,7 @@ export const doUserLogin = createAsyncThunk(
     if (response.ok) {
       return response.json();
     } else {
-      return rejectWithValue(response.ok);
+      return rejectWithValue(false);
     }
   }
 );
@@ -37,12 +37,12 @@ const userSlice = createSlice({
       return defaultValue;
     },
   },
-  extraReducers: (builder) => {
-    builder.addCase(doUserLogin.fulfilled, (state, action) => {
+  extraReducers: {
+    [doUserLogin.fulfilled]: (state, action) => {
       const { name, token } = action.payload;
-      state.name = name;
-      state.token = token;
-    });
+      state.name = name ?? "";
+      state.token = token ?? "";
+    },
   },
 });
 
