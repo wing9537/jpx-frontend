@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { NavLink } from "react-router-dom";
 import {
   Box,
   Container,
@@ -22,7 +23,7 @@ import LoginDialog from "../dialog/LoginDialog";
 import SignUpDialog from "../dialog/SignUpDialog";
 import SearchBar from "./SearchBar";
 
-const settings = ["Profile", "Account", "Dashboard", "Logout"];
+const settings = ["Setting", "Logout"];
 
 function Nav() {
   const { t, i18n } = useTranslation("layout");
@@ -63,7 +64,10 @@ function Nav() {
       : i18n.changeLanguage("en");
   };
   return (
-    <AppBar position="static">
+    <AppBar
+      position="fixed"
+      sx={{ zIndex: (theme) => theme.zIndex.drawer + 1 }}
+    >
       <LoginDialog />
       <SignUpDialog />
       <Container maxWidth="xl">
@@ -178,7 +182,13 @@ function Nav() {
                   } else {
                     return (
                       <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                        <Typography textAlign="center">{setting}</Typography>
+                        <Typography
+                          textAlign="center"
+                          component={NavLink}
+                          to="/setting"
+                        >
+                          {setting}
+                        </Typography>
                       </MenuItem>
                     );
                   }

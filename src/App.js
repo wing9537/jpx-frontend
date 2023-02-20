@@ -12,6 +12,7 @@ import Sidebar from "./components/layout/Sidebar";
 import Footer from "./components/layout/Footer";
 import Manga from "./features/manga/Manga";
 import Example from "./features/Example";
+import Setting from "./features/Setting";
 
 function App() {
   const theme = createTheme({
@@ -26,10 +27,10 @@ function App() {
         <LocalizationProvider dateAdapter={AdapterMoment}>
           <BrowserRouter basename="/">
             <Nav />
-            <Sidebar />
             <Routes>
               <Route path="/manga" element={<Manga />} />
               <Route path="/example" element={<Example />} />
+              <Route path="/setting" element={<Setting />} />
             </Routes>
             <Footer />
           </BrowserRouter>
