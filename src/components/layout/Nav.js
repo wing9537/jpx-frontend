@@ -65,7 +65,7 @@ function Nav() {
   };
   return (
     <AppBar
-      position="fixed"
+      position="sticky"
       sx={{ zIndex: (theme) => theme.zIndex.drawer + 1 }}
     >
       <LoginDialog />
@@ -76,8 +76,8 @@ function Nav() {
           <Typography
             variant="h6"
             noWrap
-            component="a"
-            href="/"
+            component={NavLink}
+            to="/"
             sx={{
               mr: 2,
               display: { xs: "none", md: "flex" },
@@ -186,6 +186,7 @@ function Nav() {
                           textAlign="center"
                           component={NavLink}
                           to="/setting"
+                          sx={{ textDecoration: "none" }}
                         >
                           {setting}
                         </Typography>

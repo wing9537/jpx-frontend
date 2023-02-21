@@ -7,6 +7,7 @@ import errorMsg from "./locales/errorMsg.json";
 import example from "./locales/example.json";
 import layout from "./locales/layout.json";
 import dialog from "./locales/dialog.json";
+import setting from "./locales/setting.json";
 
 // the translations
 // (tip move them in a JSON file and import them,
@@ -18,6 +19,7 @@ const resources = {
     example: example.en,
     layout: layout.en,
     dialog: dialog.en,
+    setting: setting.en,
   },
   zh: {
     common: common.zh,
@@ -25,6 +27,7 @@ const resources = {
     example: example.zh,
     layout: layout.zh,
     dialog: dialog.zh,
+    setting: setting.zh,
   },
 };
 

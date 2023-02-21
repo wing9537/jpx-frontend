@@ -1,20 +1,20 @@
-import React, { useState } from "react";
+import React from "react";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { AdapterMoment } from "@mui/x-date-pickers/AdapterMoment";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import store from "./redux/store";
-import { Provider } from "react-redux";
+import { useSelector } from "react-redux";
 
 // components
-import Nav from "./components/layout/Nav";
-import Sidebar from "./components/layout/Sidebar";
-import Footer from "./components/layout/Footer";
 import Manga from "./features/manga/Manga";
 import Example from "./features/Example";
 import Setting from "./features/Setting";
+import Layout from "./components/layout/Layout";
+import { getToken } from "./redux/userSlice";
 
 function App() {
+  const token = useSelector(getToken);
+
   const theme = createTheme({
     palette: {
       secondary: { main: "#64748B" },
@@ -22,21 +22,19 @@ function App() {
   });
 
   return (
-    <Provider store={store}>
-      <ThemeProvider theme={theme}>
-        <LocalizationProvider dateAdapter={AdapterMoment}>
-          <BrowserRouter basename="/">
-            <Nav />
+    <ThemeProvider theme={theme}>
+      <LocalizationProvider dateAdapter={AdapterMoment}>
+        <BrowserRouter basename="/">
+          <Layout>
             <Routes>
               <Route path="/manga" element={<Manga />} />
               <Route path="/example" element={<Example />} />
-              <Route path="/setting" element={<Setting />} />
+              {token && <Route path="/setting" element={<Setting />} />}
             </Routes>
-            <Footer />
-          </BrowserRouter>
-        </LocalizationProvider>
-      </ThemeProvider>
-    </Provider>
+          </Layout>
+        </BrowserRouter>
+      </LocalizationProvider>
+    </ThemeProvider>
   );
 }
 
