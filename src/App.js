@@ -9,7 +9,7 @@ import store from "./redux/store";
 // components
 import Manga from "./features/manga/Manga";
 import Example from "./features/Example";
-import Setting from "./features/Setting";
+import Setting from "./features/setting/Setting";
 import Layout from "./components/layout/Layout";
 import AuthKit from "./components/layout/AuthKit";
 
