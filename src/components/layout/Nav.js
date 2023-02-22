@@ -16,6 +16,7 @@ import MenuIcon from "@mui/icons-material/Menu";
 import AdbIcon from "@mui/icons-material/Adb";
 import { useSelector, useDispatch } from "react-redux";
 import { useTranslation } from "react-i18next";
+import { useNavigate } from "react-router-dom";
 
 import { getToken, getUserName, logout } from "../../redux/userSlice";
 import { openDialog } from "../../redux/dialogSlice";
@@ -23,16 +24,16 @@ import LoginDialog from "../dialog/LoginDialog";
 import SignUpDialog from "../dialog/SignUpDialog";
 import SearchBar from "./SearchBar";
 
-const settings = ["Setting", "Logout"];
-
 function Nav() {
   const { t, i18n } = useTranslation("layout");
   const [anchorElNav, setAnchorElNav] = useState(null);
   const [anchorElUser, setAnchorElUser] = useState(null);
+  const navigate = useNavigate();
 
   const dispatch = useDispatch();
   const token = useSelector(getToken);
   const userName = useSelector(getUserName);
+  const menuItems = t("menu", { returnObjects: true });
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -54,8 +55,13 @@ function Nav() {
     setAnchorElUser(null);
   };
 
-  const handleLogout = () => {
-    dispatch(logout());
+  const switchPage = (page) => {
+    if (page == "logout") {
+      dispatch(logout());
+    } else {
+      handleCloseUserMenu();
+      navigate(`/${page}`);
+    }
   };
 
   const changeLanguage = () => {
@@ -63,6 +69,7 @@ function Nav() {
       ? i18n.changeLanguage("zh")
       : i18n.changeLanguage("en");
   };
+
   return (
     <AppBar
       position="sticky"
@@ -172,27 +179,12 @@ function Nav() {
                 open={Boolean(anchorElUser)}
                 onClose={handleCloseUserMenu}
               >
-                {settings.map((setting, index, array) => {
-                  if (array.length - 1 === index) {
-                    return (
-                      <MenuItem key={setting} onClick={handleLogout}>
-                        <Typography textAlign="center">{setting}</Typography>
-                      </MenuItem>
-                    );
-                  } else {
-                    return (
-                      <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                        <Typography
-                          textAlign="center"
-                          component={NavLink}
-                          to="/setting"
-                          sx={{ textDecoration: "none" }}
-                        >
-                          {setting}
-                        </Typography>
-                      </MenuItem>
-                    );
-                  }
+                {Object.entries(menuItems).map(([page, name]) => {
+                  return (
+                    <MenuItem key={page} onClick={() => switchPage(page)}>
+                      <Typography textAlign="center">{name}</Typography>
+                    </MenuItem>
+                  );
                 })}
               </Menu>
             )}

@@ -1,8 +1,16 @@
 {
   "en": {
-    "title": "MANGA"
+    "title": "MANGA",
+    "menu": {
+      "setting": "Setting",
+      "logout": "Logout"
+    }
   },
   "zh": {
-    "title": "漫畫"
+    "title": "漫畫",
+    "menu": {
+      "setting": "設定",
+      "logout": "登出"
+    }
   }
 }

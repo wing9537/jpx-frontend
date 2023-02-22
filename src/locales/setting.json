@@ -1,11 +1,10 @@
 {
-    "en": {
-      "mangaName": "Name of Manga",
-      "authorName": "Name of Author"
-    },
-    "zh": {
-      "mangaName": "漫畫名稱",
-      "authorName": "作者名稱"
-    }
+  "en": {
+    "mangaName": "Name of Manga",
+    "authorName": "Name of Author"
+  },
+  "zh": {
+    "mangaName": "漫畫名稱",
+    "authorName": "作者名稱"
   }
-  
+}
