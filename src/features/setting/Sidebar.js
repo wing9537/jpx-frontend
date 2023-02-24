@@ -6,16 +6,21 @@ import Toolbar from "@mui/material/Toolbar";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
-import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
-import InboxIcon from "@mui/icons-material/MoveToInbox";
-import MailIcon from "@mui/icons-material/Mail";
 
 import { useTranslation } from "react-i18next";
+import { useDispatch } from "react-redux";
+import { selectOption } from "../../redux/settingSlice";
 
 const drawerWidth = 240;
 
 export default function Sidebar() {
+  const dispatch = useDispatch();
+
+  const handleOptionClick = (option) => {
+    dispatch(selectOption(option));
+  };
+
   const { t } = useTranslation("setting");
   const menuItems = t("menu", { returnObjects: true });
 
@@ -38,7 +43,11 @@ export default function Sidebar() {
           <List>
             {Object.entries(menuItems).map(([page, name]) => {
               return (
-                <ListItem key={name} disablePadding>
+                <ListItem
+                  key={name}
+                  disablePadding
+                  onClick={() => handleOptionClick(page)}
+                >
                   <ListItemButton>
                     <ListItemText primary={name} />
                   </ListItemButton>
