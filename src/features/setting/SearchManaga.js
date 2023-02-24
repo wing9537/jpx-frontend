@@ -1,7 +1,6 @@
 import { Stack, Box, Button } from "@mui/material";
 import { useTranslation } from "react-i18next";
 
-import Sidebar from "./Sidebar";
 import DataTable from "../../components/table/Table";
 import BaseForm from "../../components/inputs/baseForm";
 import BaseInput from "../../components/inputs/baseInput";
