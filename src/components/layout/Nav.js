@@ -84,7 +84,7 @@ function Nav() {
             variant="h6"
             noWrap
             component={NavLink}
-            to="/"
+            to="/home"
             sx={{
               mr: 2,
               display: { xs: "none", md: "flex" },

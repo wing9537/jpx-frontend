@@ -1,10 +1,18 @@
 {
   "en": {
     "mangaName": "Name of Manga",
-    "authorName": "Name of Author"
+    "authorName": "Name of Author",
+    "menu": {
+      "profile": "Profile",
+      "manga": "Manga"
+    }
   },
   "zh": {
     "mangaName": "漫畫名稱",
-    "authorName": "作者名稱"
+    "authorName": "作者名稱",
+    "menu": {
+      "profile": "個人資料",
+      "manga": "漫畫"
+    }
   }
 }

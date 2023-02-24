@@ -11,9 +11,14 @@ import ListItemText from "@mui/material/ListItemText";
 import InboxIcon from "@mui/icons-material/MoveToInbox";
 import MailIcon from "@mui/icons-material/Mail";
 
+import { useTranslation } from "react-i18next";
+
 const drawerWidth = 240;
 
 export default function Sidebar() {
+  const { t } = useTranslation("setting");
+  const menuItems = t("menu", { returnObjects: true });
+
   return (
     <Box sx={{ display: "flex" }}>
       <CssBaseline />
@@ -31,16 +36,15 @@ export default function Sidebar() {
         <Toolbar />
         <Box sx={{ overflow: "auto" }}>
           <List>
-            {["Profile", "Manga"].map((text, index) => (
-              <ListItem key={text} disablePadding>
-                <ListItemButton>
-                  <ListItemIcon>
-                    {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                  </ListItemIcon>
-                  <ListItemText primary={text} />
-                </ListItemButton>
-              </ListItem>
-            ))}
+            {Object.entries(menuItems).map(([page, name]) => {
+              return (
+                <ListItem key={name} disablePadding>
+                  <ListItemButton>
+                    <ListItemText primary={name} />
+                  </ListItemButton>
+                </ListItem>
+              );
+            })}
           </List>
         </Box>
       </Drawer>
