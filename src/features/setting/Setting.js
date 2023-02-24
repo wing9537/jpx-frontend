@@ -49,7 +49,7 @@ export default function Sidebar() {
               {Object.entries(menuItems).map(([page, name]) => {
                 return (
                   <ListItem
-                    key={name}
+                    key={page}
                     disablePadding
                     onClick={() => handleOptionClick(page)}
                   >
