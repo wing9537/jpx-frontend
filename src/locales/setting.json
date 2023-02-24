@@ -4,7 +4,7 @@
     "authorName": "Name of Author",
     "menu": {
       "profile": "Profile",
-      "manga": "Manga"
+      "searchManga": "Manga"
     }
   },
   "zh": {
@@ -12,7 +12,7 @@
     "authorName": "作者名稱",
     "menu": {
       "profile": "個人資料",
-      "manga": "漫畫"
+      "searchManga": "漫畫"
     }
   }
 }

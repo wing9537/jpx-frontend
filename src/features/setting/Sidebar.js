@@ -9,10 +9,18 @@ import ListItemButton from "@mui/material/ListItemButton";
 import ListItemText from "@mui/material/ListItemText";
 
 import { useTranslation } from "react-i18next";
+import { useDispatch } from "react-redux";
+import { selectOption } from "../../redux/settingSlice";
 
 const drawerWidth = 240;
 
 export default function Sidebar() {
+  const dispatch = useDispatch();
+
+  const handleOptionClick = (option) => {
+    dispatch(selectOption(option));
+  };
+
   const { t } = useTranslation("setting");
   const menuItems = t("menu", { returnObjects: true });
 
@@ -34,7 +42,11 @@ export default function Sidebar() {
         <Box sx={{ overflow: "auto" }}>
           <List>
             {Object.entries(menuItems).map(([key, name]) => (
-              <ListItem key={key} disablePadding>
+              <ListItem
+                key={key}
+                disablePadding
+                onClick={() => handleOptionClick(page)}
+              >
                 <ListItemButton>
                   <ListItemText primary={name} />
                 </ListItemButton>
