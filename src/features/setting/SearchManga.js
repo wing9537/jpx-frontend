@@ -1,13 +1,15 @@
 import { Stack, Box, Button } from "@mui/material";
 import { useTranslation } from "react-i18next";
+import { useNavigate } from "react-router-dom";
 
 import DataTable from "../../components/table/Table";
 import BaseForm from "../../components/inputs/baseForm";
 import BaseInput from "../../components/inputs/baseInput";
 import SettingMenu from "./SettingMenu";
 
-function Setting() {
+function SearchManga() {
   const { t } = useTranslation("setting");
+  const navigate = useNavigate();
 
   const modelObj = {
     name: "",
@@ -17,6 +19,10 @@ function Setting() {
   const limit = {
     name: { min: -1, max: -1 },
     author: { min: -1, max: -1 },
+  };
+
+  const handleMangaCreate = () => {
+    navigate(`/setting/manga/new`);
   };
 
   return (
@@ -42,7 +48,7 @@ function Setting() {
           </BaseForm>
         </Stack>
         <Stack direction="row">
-          <Button>Create</Button>
+          <Button onClick={handleMangaCreate}>Create</Button>
           <Button>Search</Button>
         </Stack>
         <DataTable />
@@ -51,4 +57,4 @@ function Setting() {
   );
 }
 
-export default Setting;
+export default SearchManga;

@@ -60,7 +60,7 @@ function Nav() {
       dispatch(logout());
     } else {
       handleCloseUserMenu();
-      navigate(`/${page}`);
+      navigate(`/${page}/profile`);
     }
   };
 

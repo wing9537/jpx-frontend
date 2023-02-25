@@ -1,20 +1,40 @@
 import * as React from "react";
 import { DataGrid } from "@mui/x-data-grid";
 import { useTranslation } from "react-i18next";
+import { Button } from "@mui/material";
 
 export default function DataTable() {
   const { t } = useTranslation("setting");
 
   const columns = [
     { field: "id", headerName: "ID", width: 10 },
-    { field: "mangaName", headerName: t("mangaName"), width: 350 },
+    { field: "mangaName", headerName: t("mangaName"), width: 300 },
     { field: "authorName", headerName: t("authorName"), width: 300 },
     {
       field: "url",
       headerName: "URL",
       width: 300,
     },
+    {
+      field: "actions",
+      headerName: "Actions",
+      sortable: false,
+      width: 120,
+      renderCell: (params) => (
+        <Button
+          variant="contained"
+          color="primary"
+          onClick={() => handleButtonClick(params.row.id)}
+        >
+          Edit
+        </Button>
+      ),
+    },
   ];
+
+  const handleButtonClick = (id) => {
+    console.log(id);
+  };
 
   const rows = [
     {

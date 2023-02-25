@@ -16,8 +16,7 @@ import { useNavigate } from "react-router-dom";
 
 const drawerWidth = 240;
 
-export default function Sidebar() {
-  const [settingOption, setSettingOption] = useState("profile");
+function SettingMenu() {
   const navigate = useNavigate();
 
   const handleOptionClick = (option) => {
@@ -65,3 +64,5 @@ export default function Sidebar() {
     </Stack>
   );
 }
+
+export default SettingMenu;

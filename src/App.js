@@ -9,9 +9,11 @@ import store from "./redux/store";
 // components
 import Manga from "./features/manga/Manga";
 import Example from "./features/Example";
-import Setting from "./features/setting/Setting";
 import Layout from "./components/layout/Layout";
 import AuthKit from "./components/layout/AuthKit";
+import Profile from "./features/setting/Profile";
+import SearchManga from "./features/setting/SearchManga";
+import MangaDetails from "./features/setting/MangaDetails";
 
 function App() {
   const theme = createTheme({
@@ -30,7 +32,11 @@ function App() {
                 <Route path="/home" element={<Manga />} />
                 <Route path="/example" element={<Example />} />
                 <Route path="/" element={<AuthKit />}>
-                  <Route path="/setting" element={<Setting />} />
+                  <Route path="/setting">
+                    <Route path="manga" element={<SearchManga />} />
+                    <Route path="profile" element={<Profile />} />
+                    <Route path="manga/:id" element={<MangaDetails />} />
+                  </Route>
                 </Route>
               </Routes>
             </Layout>

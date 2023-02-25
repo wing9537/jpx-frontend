@@ -5,7 +5,7 @@ function Manga() {
     <Box>
       <Box>Latest update</Box>
       <Box>New release</Box>
-      <Box>Hot managas</Box>
+      <Box>Hot mangas</Box>
       <Box>Being watched</Box>
     </Box>
   );
