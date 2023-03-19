@@ -76,11 +76,7 @@ function SearchManga() {
           <Button onClick={handleMangaCreate}>Create</Button>
           <Button>Search</Button>
         </Stack>
-        <BaseTable
-          rows={rows}
-          headers={headers}
-          onViewAction={handleViewClick}
-        />
+        <BaseTable rows={rows} headers={headers} viewAction={handleViewClick} />
       </Box>
     </Stack>
   );

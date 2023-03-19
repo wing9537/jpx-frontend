@@ -2,7 +2,7 @@ import { useEffect, useState, useRef } from "react";
 import { DataGrid } from "@mui/x-data-grid";
 import { Button, Box } from "@mui/material";
 
-function BaseTable({ rows, headers, onViewAction }) {
+function BaseTable({ rows, headers, viewAction }) {
   const actions = [
     {
       field: "actions",
@@ -12,7 +12,7 @@ function BaseTable({ rows, headers, onViewAction }) {
         <Button
           variant="contained"
           color="primary"
-          onClick={() => onViewAction(params.row.id)}
+          onClick={() => viewAction(params.row.id)}
         >
           Edit
         </Button>

@@ -34,7 +34,7 @@ function BaseForm({
     console.log("Is Form Submitted.");
     setIsLoading(true);
     onSubmit(methods.getValues()).then((isSucceed) => {
-      if (isSucceed) setFormStatus(FORM.confirm);
+      setFormStatus(isSucceed ? FORM.confirm : FORM.edit);
       setIsLoading(false);
     });
   };
@@ -43,7 +43,7 @@ function BaseForm({
     console.log("Is Form Confirmed.");
     setIsLoading(true);
     onConfirm(methods.getValues()).then((isSucceed) => {
-      if (isSucceed) setFormStatus(FORM.completed);
+      setFormStatus(isSucceed ? FORM.completed : FORM.edit);
       setIsLoading(false);
     });
   };

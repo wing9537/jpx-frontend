@@ -1,37 +1,21 @@
-import {
-  createSlice,
-  createSelector,
-  createAsyncThunk,
-} from "@reduxjs/toolkit";
+import { createSlice, createSelector } from "@reduxjs/toolkit";
+import { doUserLogin } from "./userThunk";
 
 const defaultValue = { name: "", token: "" };
-
-// thunks
-export const doUserLogin = createAsyncThunk(
-  "user/login",
-  async (data, { rejectWithValue }) => {
-    const response = await fetch("jpx/user/login", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data),
-    });
-    if (response.ok) {
-      return response.json();
-    } else {
-      return rejectWithValue(false);
-    }
-  }
-);
 
 // slice - actions & reducers
 const userSlice = createSlice({
   name: "user",
   initialState: defaultValue,
   reducers: {
+    refresh: (state, action) => {
+      const { username, token } = action.payload;
+      state.name = username ?? "";
+      state.token = token ?? "";
+    },
     logout: (state, action) => {
       console.log("logout");
+      window.cookies.remove("token");
       return defaultValue;
     },
   },
@@ -40,11 +24,12 @@ const userSlice = createSlice({
       const { name, token } = action.payload;
       state.name = name ?? "";
       state.token = token ?? "";
+      window.cookies.set("token", token);
     },
   },
 });
 
-export const { logout } = userSlice.actions;
+export const { refresh: refreshUser, logout } = userSlice.actions;
 
 export default userSlice.reducer;
 
