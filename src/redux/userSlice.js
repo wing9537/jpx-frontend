@@ -10,8 +10,6 @@ const defaultValue = { name: "", token: "" };
 export const doUserLogin = createAsyncThunk(
   "user/login",
   async (data, { rejectWithValue }) => {
-    console.log(data);
-
     const response = await fetch("jpx/user/login", {
       method: "POST",
       headers: {

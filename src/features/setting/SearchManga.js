@@ -4,7 +4,7 @@ import { Stack, Box, Button } from "@mui/material";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 
-import DataTable from "../../components/inputs/baseTable";
+import BaseTable from "../../components/inputs/baseTable";
 import BaseForm from "../../components/inputs/baseForm";
 import BaseInput from "../../components/inputs/baseInput";
 import SettingMenu from "./SettingMenu";
@@ -13,10 +13,11 @@ function SearchManga() {
   const { t } = useTranslation("setting");
   const navigate = useNavigate();
   const [rows, setRows] = useState([]);
+
   const headers = [
-    { field: "name", headerName: t("manga.name"), percent: 0.3 },
-    { field: "author", headerName: t("manga.author"), percent: 0.3 },
-    { field: "url", headerName: "URL", percent: 0.3 },
+    { field: "name", headerName: t("manga.name"), width: 0.3 },
+    { field: "author", headerName: t("manga.author"), width: 0.3 },
+    { field: "url", headerName: "URL", width: 0.3 },
   ];
 
   const modelObj = {
@@ -46,8 +47,7 @@ function SearchManga() {
       console.log(data);
       setRows(data);
     }
-    // prevent form confirm
-    return false;
+    return false; // prevent form confirm
   };
 
   return (
@@ -76,7 +76,7 @@ function SearchManga() {
           <Button onClick={handleMangaCreate}>Create</Button>
           <Button>Search</Button>
         </Stack>
-        <DataTable
+        <BaseTable
           rows={rows}
           headers={headers}
           onViewAction={handleViewClick}

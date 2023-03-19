@@ -2,7 +2,7 @@ import { useEffect, useState, useRef } from "react";
 import { DataGrid } from "@mui/x-data-grid";
 import { Button, Box } from "@mui/material";
 
-export default function DataTable({ rows, headers, onViewAction }) {
+function BaseTable({ rows, headers, onViewAction }) {
   const actions = [
     {
       field: "actions",
@@ -30,7 +30,7 @@ export default function DataTable({ rows, headers, onViewAction }) {
 
       const newColumns = headers.map((column, index) => {
         // Calculate the column width based on the container width
-        const newWidth = containerWidth * column.percent;
+        const newWidth = containerWidth * column.width;
         return { ...column, width: newWidth };
       });
 
@@ -60,3 +60,5 @@ export default function DataTable({ rows, headers, onViewAction }) {
     </Box>
   );
 }
+
+export default BaseTable;
