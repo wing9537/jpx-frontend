@@ -1,15 +1,10 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
+import { get, post } from "./fetchAPI";
 
-export const doUserLogin = createAsyncThunk(
+export const loginUser = createAsyncThunk(
   "user/login",
   async (data, { rejectWithValue }) => {
-    const response = await fetch("jpx/user/login", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data),
-    });
+    const response = await post({ link: "/jpx/user/login", data });
     if (response.ok) {
       return response.json();
     } else {
@@ -18,27 +13,18 @@ export const doUserLogin = createAsyncThunk(
   }
 );
 
-export const registration = createAsyncThunk("user/register", async (data) => {
-  const response = await fetch("/jpx/user/register", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(data),
-  });
-  return response.ok;
-});
+export const newProfile = createAsyncThunk(
+  "user/register",
+  async (data, { rejectWithValue }) => {
+    const response = await post({ link: "/jpx/user/register", data });
+    return response.ok;
+  }
+);
 
 export const getProfile = createAsyncThunk(
   "user/profile",
   async (data, { rejectWithValue }) => {
-    const response = await fetch("/jpx/user/profile", {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${window.cookies.get("token")}`,
-      },
-    });
+    const response = await get({ link: "/jpx/user/profile" });
     if (response.ok) {
       return response.json();
     } else {
@@ -46,3 +32,7 @@ export const getProfile = createAsyncThunk(
     }
   }
 );
+
+export const setProfile = null; // TODO: /user/profile [PUT]
+
+export const delProfile = null; // TODO: /user/profile [DELETE]

@@ -1,23 +1,26 @@
 import React, { useState } from "react";
-
 import { Stack, Box, Button } from "@mui/material";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
 
+// components
 import BaseTable from "../../components/inputs/baseTable";
 import BaseForm from "../../components/inputs/baseForm";
 import BaseInput from "../../components/inputs/baseInput";
 import SettingMenu from "./SettingMenu";
+import { searchManga } from "../../redux/mangaThunk";
 
 function SearchManga() {
   const { t } = useTranslation("setting");
-  const navigate = useNavigate();
   const [rows, setRows] = useState([]);
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const headers = [
     { field: "name", headerName: t("manga.name"), width: 0.3 },
     { field: "author", headerName: t("manga.author"), width: 0.3 },
-    { field: "url", headerName: "URL", width: 0.3 },
+    { field: "link", headerName: "URL", width: 0.3 },
   ];
 
   const modelObj = {
@@ -39,14 +42,8 @@ function SearchManga() {
   };
 
   const onSubmit = async (formData) => {
-    console.log(formData);
-    const params = new URLSearchParams(formData);
-    const response = await fetch(`/jpx/manga/search?${params}`);
-    if (response.ok) {
-      const data = await response.json();
-      console.log(data);
-      setRows(data);
-    }
+    const result = await dispatch(searchManga(formData));
+    setRows(result.payload || []);
     return false; // prevent form confirm
   };
 

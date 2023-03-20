@@ -1,15 +1,39 @@
 function buildRequestHeader(headers) {
+  const token = window.cookies.get("token");
   return {
     "Content-Type": "application/json",
+    // ...(token ? { Authorization: `Bearer ${token}` } : {}),
     ...headers,
   };
 }
 
-function send(url, { method = "GET", headers = {}, data }) {
-  return fetch(url, {
+export default function send({ link, method = "GET", headers = {}, data }) {
+  const options = {
     method: method,
     headers: buildRequestHeader(headers),
-    body: JSON.stringify(data),
-  });
+  };
+  if (data) {
+    if (method == "GET") {
+      link = `${link}?${new URLSearchParams(data)}`;
+    } else {
+      options.body = JSON.stringify(data);
+    }
+  }
+  return fetch(link, options);
 }
-export default send;
+
+export function get(options) {
+  return send({ ...options, method: "GET" });
+}
+
+export function post(options) {
+  return send({ ...options, method: "POST" });
+}
+
+export function put(options) {
+  return send({ ...options, method: "PUT" });
+}
+
+export function remove(options) {
+  return send({ ...options, method: "DELETE" });
+}

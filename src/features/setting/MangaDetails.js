@@ -1,18 +1,20 @@
+import { useEffect } from "react";
 import { useParams } from "react-router-dom";
-
+import { useTranslation } from "react-i18next";
+import { useDispatch } from "react-redux";
 import { Button } from "@mui/material";
 import { Stack } from "@mui/system";
+
+// components
 import BaseForm from "../../components/inputs/baseForm";
 import BaseInput from "../../components/inputs/baseInput";
 import SettingMenu from "./SettingMenu";
-
-import { useTranslation } from "react-i18next";
-import { useEffect } from "react";
+import { newManga, getManga } from "../../redux/mangaThunk";
 
 function MangaDetails() {
   const { t } = useTranslation("setting");
   const { id } = useParams();
-  console.log("params", id);
+  const dispatch = useDispatch();
 
   const modelObj = {
     name: "",
@@ -33,27 +35,13 @@ function MangaDetails() {
   };
 
   const onConfirm = async (formData) => {
-    console.log(formData);
-    const response = await fetch("/jpx/manga/new", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(formData),
-    });
-    return response.ok;
+    const result = await dispatch(newManga(formData));
+    return result.payload;
   };
 
   useEffect(() => {
     if (id !== "new") {
-      const fetchManga = async () => {
-        const response = await fetch(`/jpx/manga/${id}`);
-        if (response.ok) {
-          const data = await response.json();
-          console.log(data);
-        }
-      };
-      fetchManga();
+      dispatch(getManga(id)).then((payload) => console.log(payload));
     }
   }, [id]);
 

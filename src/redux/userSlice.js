@@ -1,5 +1,5 @@
 import { createSlice, createSelector } from "@reduxjs/toolkit";
-import { doUserLogin } from "./userThunk";
+import { loginUser } from "./userThunk";
 
 const defaultValue = { name: "", token: "" };
 
@@ -20,7 +20,7 @@ const userSlice = createSlice({
     },
   },
   extraReducers: {
-    [doUserLogin.fulfilled]: (state, action) => {
+    [loginUser.fulfilled]: (state, action) => {
       const { name, token } = action.payload;
       state.name = name ?? "";
       state.token = token ?? "";

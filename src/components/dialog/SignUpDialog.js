@@ -16,7 +16,7 @@ import {
   closeDialog,
   getDialogStateByName,
 } from "../../redux/dialogSlice";
-import { registration } from "../../redux/userThunk";
+import { newProfile } from "../../redux/userThunk";
 import BaseInput from "../inputs/baseInput";
 import BaseForm from "../inputs/baseForm";
 import { isValidEmail, isValidMobile } from "../../common/utils";
@@ -57,7 +57,7 @@ function SignUpDialog() {
   };
 
   const onConfirm = async (formData) => {
-    const result = await dispatch(registration(formData));
+    const result = await dispatch(newProfile(formData));
     return result.payload;
   };
 
