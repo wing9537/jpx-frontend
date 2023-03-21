@@ -22,7 +22,7 @@ function SearchManga() {
   };
 
   const handleMangaCreate = () => {
-    navigate(`/setting/manga/new`);
+    navigate("/setting/manga/new");
   };
 
   return (
