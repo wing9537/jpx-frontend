@@ -1,15 +1,25 @@
 {
   "en": {
-    "mangaName": "Name of Manga",
-    "authorName": "Name of Author",
+    "manga": {
+      "name": "Manga Name",
+      "author": "Author Name",
+      "desc": "Manga Description",
+      "link": "Manga Link",
+      "latestChapter": "Latest Chapter"
+    },
     "menu": {
       "profile": "Profile",
       "manga": "Manga"
     }
   },
   "zh": {
-    "mangaName": "漫畫名稱",
-    "authorName": "作者名稱",
+    "manga": {
+      "name": "漫畫名稱",
+      "author": "作者名稱",
+      "desc": "漫畫描述",
+      "link": "漫畫連結",
+      "latestChapter": "最新章節"
+    },
     "menu": {
       "profile": "個人資料",
       "manga": "漫畫"

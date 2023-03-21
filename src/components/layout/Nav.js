@@ -20,8 +20,6 @@ import { useNavigate } from "react-router-dom";
 
 import { getToken, getUserName, logout } from "../../redux/userSlice";
 import { openDialog } from "../../redux/dialogSlice";
-import LoginDialog from "../dialog/LoginDialog";
-import SignUpDialog from "../dialog/SignUpDialog";
 import SearchBar from "./SearchBar";
 
 function Nav() {
@@ -75,8 +73,6 @@ function Nav() {
       position="sticky"
       sx={{ zIndex: (theme) => theme.zIndex.drawer + 1 }}
     >
-      <LoginDialog />
-      <SignUpDialog />
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <AdbIcon sx={{ display: { xs: "none", md: "flex" }, mr: 1 }} />

@@ -1,7 +1,7 @@
 [v] get form state outside
 [ ] display backend error message on corrsponding inputs
-[ ] custom hook for wrapping the fetch method
+[v] custom hook for wrapping the fetch method
 [ ] show a loading animation when fetching data
-[ ] save token in cookies
-[ ] load user info if cookies exists
+[v] save token in cookies
+[v] load user info if cookies exists
 [ ] upgrade baseFrom, fit for searchFrom

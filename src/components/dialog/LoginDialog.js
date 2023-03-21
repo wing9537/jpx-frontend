@@ -10,7 +10,7 @@ import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
 
 // self component
-import { doUserLogin } from "../../redux/userSlice";
+import { loginUser } from "../../redux/userThunk";
 import {
   openDialog,
   closeDialog,
@@ -45,9 +45,8 @@ function LoginDialog() {
   const { t } = useTranslation("dialog");
 
   const onSubmit = async (formData) => {
-    const user = await dispatch(doUserLogin(formData));
-    console.log(user);
-    if (user) {
+    const result = await dispatch(loginUser(formData));
+    if (result.payload) {
       dispatch(closeDialog("login"));
     } else {
       // TODO: show error

@@ -16,6 +16,7 @@ import {
   closeDialog,
   getDialogStateByName,
 } from "../../redux/dialogSlice";
+import { newProfile } from "../../redux/userThunk";
 import BaseInput from "../inputs/baseInput";
 import BaseForm from "../inputs/baseForm";
 import { isValidEmail, isValidMobile } from "../../common/utils";
@@ -56,15 +57,8 @@ function SignUpDialog() {
   };
 
   const onConfirm = async (formData) => {
-    console.log(formData);
-    const response = await fetch("/jpx/user/register", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(formData),
-    });
-    return response.ok;
+    const result = await dispatch(newProfile(formData));
+    return result.payload;
   };
 
   const isPasswordMatch = (_, values) => {
