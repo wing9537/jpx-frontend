@@ -2,7 +2,6 @@
 [ ] display backend error message on corrsponding inputs
 [v] custom hook for wrapping the fetch method
 [ ] show a loading animation when fetching data
-
 [v] save token in cookies
 [v] load user info if cookies exists
 [ ] upgrade baseFrom, fit for searchFrom

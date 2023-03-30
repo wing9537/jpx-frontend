@@ -33,8 +33,8 @@ function App() {
                 <Route path="/example" element={<Example />} />
                 <Route path="/" element={<AuthKit />}>
                   <Route path="/setting">
-                    <Route path="manga" element={<SearchManga />} />
                     <Route path="profile" element={<Profile />} />
+                    <Route path="manga" element={<SearchManga />} />
                     <Route path="manga/:id" element={<MangaDetails />} />
                   </Route>
                 </Route>
