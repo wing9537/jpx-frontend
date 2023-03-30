@@ -2,7 +2,7 @@ function buildRequestHeader(headers) {
   const token = window.cookies.get("token");
   return {
     "Content-Type": "application/json",
-    // ...(token ? { Authorization: `Bearer ${token}` } : {}),
+    ...(token ? { Authorization: `Bearer ${token}` } : {}),
     ...headers,
   };
 }

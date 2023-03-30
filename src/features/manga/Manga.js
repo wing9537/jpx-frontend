@@ -11,36 +11,36 @@ import {
 } from "@mui/material";
 
 const mangas = [
-  {
-    title: "Manga 1",
-    description: "A brief description of Manga 1",
-    coverImage:
-      "https://mhfm5us.cdndm5.com/1/432/20190719155618_180x240_21.jpeg",
-  },
-  {
-    title: "Manga 2",
-    description: "A brief description of Manga 2",
-    coverImage:
-      "https://mhfm5us.cdndm5.com/1/432/20190719155618_180x240_21.jpeg",
-  },
-  {
-    title: "Manga 3",
-    description: "A brief description of Manga 3",
-    coverImage:
-      "https://mhfm5us.cdndm5.com/1/432/20190719155618_180x240_21.jpeg",
-  },
-  {
-    title: "Manga 4",
-    description: "A brief description of Manga 4",
-    coverImage:
-      "https://mhfm5us.cdndm5.com/1/432/20190719155618_180x240_21.jpeg",
-  },
-  {
-    title: "Manga 5",
-    description: "A brief description of Manga 5",
-    coverImage:
-      "https://mhfm5us.cdndm5.com/1/432/20190719155618_180x240_21.jpeg",
-  },
+  // {
+  //   title: "Manga 1",
+  //   description: "A brief description of Manga 1",
+  //   coverImage:
+  //     "https://mhfm5us.cdndm5.com/1/432/20190719155618_180x240_21.jpeg",
+  // },
+  // {
+  //   title: "Manga 2",
+  //   description: "A brief description of Manga 2",
+  //   coverImage:
+  //     "https://mhfm5us.cdndm5.com/1/432/20190719155618_180x240_21.jpeg",
+  // },
+  // {
+  //   title: "Manga 3",
+  //   description: "A brief description of Manga 3",
+  //   coverImage:
+  //     "https://mhfm5us.cdndm5.com/1/432/20190719155618_180x240_21.jpeg",
+  // },
+  // {
+  //   title: "Manga 4",
+  //   description: "A brief description of Manga 4",
+  //   coverImage:
+  //     "https://mhfm5us.cdndm5.com/1/432/20190719155618_180x240_21.jpeg",
+  // },
+  // {
+  //   title: "Manga 5",
+  //   description: "A brief description of Manga 5",
+  //   coverImage:
+  //     "https://mhfm5us.cdndm5.com/1/432/20190719155618_180x240_21.jpeg",
+  // },
 ];
 
 const MangaCard = ({ manga }) => (
