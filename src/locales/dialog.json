@@ -16,6 +16,9 @@
       "title": "Sign Up",
       "link": "Already have a account? Sign in"
     },
+    "button": {
+      "login": "Login"
+    },
     "validate": {
       "pwdNotMatch": "Passwords do not match"
     }
@@ -36,6 +39,9 @@
     "signup": {
       "title": "註冊",
       "link": "已有帳號？登入"
+    },
+    "button": {
+      "login": "登入"
     },
     "validate": {
       "passwordNotMatch": "密碼不匹配"

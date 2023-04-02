@@ -20,17 +20,9 @@ import BaseInput from "../inputs/baseInput";
 import BaseForm from "../inputs/baseForm";
 
 function LoginDialog() {
+  const { t } = useTranslation("dialog");
   const isOpen = useSelector(getDialogStateByName("login"));
   const dispatch = useDispatch();
-
-  const openSignUp = () => {
-    dispatch(openDialog("signup"));
-    dispatch(closeDialog("login"));
-  };
-
-  const handleClose = () => {
-    return dispatch(closeDialog("login"));
-  };
 
   const modelObj = {
     username: "",
@@ -42,7 +34,14 @@ function LoginDialog() {
     password: { min: 1, max: -1 },
   };
 
-  const { t } = useTranslation("dialog");
+  const openSignUp = () => {
+    dispatch(openDialog("signup"));
+    dispatch(closeDialog("login"));
+  };
+
+  const handleClose = () => {
+    return dispatch(closeDialog("login"));
+  };
 
   const onSubmit = async (formData) => {
     const result = await dispatch(loginUser(formData));
@@ -60,7 +59,12 @@ function LoginDialog() {
       </DialogTitle>
       <DialogContent>
         <DialogContentText>{t("login.subTitle")}</DialogContentText>
-        <BaseForm mx={0} modelObj={modelObj} onSubmit={onSubmit}>
+        <BaseForm
+          mx={0}
+          modelObj={modelObj}
+          onSubmit={onSubmit}
+          submitLabel={t("button.login")}
+        >
           <BaseInput
             name="username"
             type="text"

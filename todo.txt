@@ -4,4 +4,5 @@
 [ ] show a loading animation when fetching data
 [v] save token in cookies
 [v] load user info if cookies exists
-[ ] upgrade baseFrom, fit for searchFrom
+[v] upgrade baseFrom, fit for searchFrom
+[ ] add baseButton for prevent double submission issue

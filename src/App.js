@@ -12,7 +12,7 @@ import Example from "./features/Example";
 import Layout from "./components/layout/Layout";
 import AuthKit from "./components/layout/AuthKit";
 import Profile from "./features/setting/Profile";
-import SearchManga from "./features/setting/SearchManga";
+import MangaSearch from "./features/setting/MangaSearch";
 import MangaDetails from "./features/setting/MangaDetails";
 
 function App() {
@@ -34,7 +34,7 @@ function App() {
                 <Route path="/" element={<AuthKit />}>
                   <Route path="/setting">
                     <Route path="profile" element={<Profile />} />
-                    <Route path="manga" element={<SearchManga />} />
+                    <Route path="manga" element={<MangaSearch />} />
                     <Route path="manga/:id" element={<MangaDetails />} />
                   </Route>
                 </Route>

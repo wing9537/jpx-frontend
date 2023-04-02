@@ -22,10 +22,9 @@ import BaseForm from "../inputs/baseForm";
 import { isValidEmail, isValidMobile } from "../../common/utils";
 
 function SignUpDialog() {
+  const { t } = useTranslation("dialog");
   const isOpen = useSelector(getDialogStateByName("signup"));
   const dispatch = useDispatch();
-
-  const { t } = useTranslation("dialog");
 
   const modelObj = {
     firstname: "",

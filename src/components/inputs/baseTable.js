@@ -1,24 +1,41 @@
 import { useEffect, useState, useRef } from "react";
 import { DataGrid } from "@mui/x-data-grid";
 import { Button, Box } from "@mui/material";
+import { useTranslation } from "react-i18next";
 
-function BaseTable({ rows, headers, viewAction }) {
-  const actions = [
-    {
-      field: "actions",
-      headerName: "Actions",
-      sortable: false,
-      renderCell: (params) => (
+function BaseTable({
+  rows,
+  headers,
+  viewAction = () => {},
+  deleteAction = () => {},
+}) {
+  const { t } = useTranslation("common");
+
+  const actions = {
+    field: "actions",
+    headerName: t("field.action"),
+    sortable: false,
+    renderCell: (params) => (
+      <>
         <Button
+          sx={{ mx: "5px" }}
           variant="contained"
           color="primary"
           onClick={() => viewAction(params.row.id)}
         >
-          Edit
+          {t("button.edit")}
         </Button>
-      ),
-    },
-  ];
+        <Button
+          sx={{ mx: "5px" }}
+          variant="contained"
+          color="error"
+          onClick={() => deleteAction(params.row.id)}
+        >
+          {t("button.delete")}
+        </Button>
+      </>
+    ),
+  };
 
   const [columns, setColumns] = useState(headers);
   const dataGridRef = useRef(null);
@@ -26,15 +43,17 @@ function BaseTable({ rows, headers, viewAction }) {
   useEffect(() => {
     const updateColumnWidths = () => {
       if (!dataGridRef.current) return;
-      const containerWidth = dataGridRef.current.clientWidth;
+      const containerWidth = dataGridRef.current.clientWidth - 2;
+      let remainingWidth = containerWidth;
 
       const newColumns = headers.map((column, index) => {
         // Calculate the column width based on the container width
         const newWidth = containerWidth * column.width;
+        remainingWidth = remainingWidth - newWidth;
         return { ...column, width: newWidth };
       });
-
-      setColumns([...newColumns, ...actions]);
+      newColumns.push({ ...actions, width: remainingWidth });
+      setColumns(newColumns);
     };
 
     // Update column widths initially
@@ -45,10 +64,10 @@ function BaseTable({ rows, headers, viewAction }) {
     return () => {
       window.removeEventListener("resize", updateColumnWidths);
     };
-  }, []);
+  }, [headers]);
 
   return (
-    <Box width="100%" heigth="400px" ref={dataGridRef}>
+    <Box width="98%" ref={dataGridRef}>
       <DataGrid
         rows={rows}
         columns={columns}

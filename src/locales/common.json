@@ -1,16 +1,34 @@
 {
   "en": {
     "title": "Form Submitted",
-    "submit": "Submit",
-    "confirm": "Confirm",
-    "back": "Back",
-    "home": "Home"
+    "button": {
+      "submit": "Submit",
+      "confirm": "Confirm",
+      "back": "Back",
+      "home": "Home",
+      "search": "Search",
+      "create": "Create",
+      "edit": "Edit",
+      "delete": "Delete"
+    },
+    "field": {
+      "action": "Actions"
+    }
   },
   "zh": {
     "title": "已遞交表單",
-    "submit": "遞交",
-    "confirm": "確認",
-    "back": "返回",
-    "home": "主頁"
+    "button": {
+      "submit": "遞交",
+      "confirm": "確認",
+      "back": "返回",
+      "home": "主頁",
+      "search": "搜尋",
+      "create": "新增",
+      "edit": "編輯",
+      "delete": "刪除"
+    },
+    "field": {
+      "action": "操作"
+    }
   }
 }

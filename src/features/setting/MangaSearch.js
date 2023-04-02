@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Stack, Box, Button } from "@mui/material";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
@@ -11,15 +11,15 @@ import BaseInput from "../../components/inputs/baseInput";
 import SettingMenu from "./SettingMenu";
 import { searchManga } from "../../redux/mangaThunk";
 
-function SearchManga() {
-  const { t } = useTranslation("setting");
+function MangaSearch() {
+  const { t } = useTranslation(["setting", "common"]);
   const [rows, setRows] = useState([]);
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const headers = [
     { field: "name", headerName: t("manga.name"), width: 0.3 },
-    { field: "author", headerName: t("manga.author"), width: 0.3 },
+    { field: "author", headerName: t("manga.author"), width: 0.25 },
     { field: "link", headerName: "URL", width: 0.3 },
   ];
 
@@ -47,31 +47,47 @@ function SearchManga() {
     return false; // prevent form confirm
   };
 
+  useEffect(() => {
+    onSubmit(modelObj);
+  }, []);
+
   return (
     <Stack direction="row">
       <SettingMenu />
       <Box sx={{ width: "100%" }}>
         <Stack direction="column">
-          <BaseForm mx={0} modelObj={modelObj} onSubmit={onSubmit}>
+          <BaseForm
+            mx={1}
+            modelObj={modelObj}
+            isStateful={false}
+            onSubmit={onSubmit}
+            submitLabel={t("common:button.search")}
+            buttonGroups={
+              <Button
+                onClick={handleMangaCreate}
+                variant="outlined"
+                size="large"
+                sx={{ mx: "5px", order: "-1" }}
+              >
+                {t("common:button.create")}
+              </Button>
+            }
+          >
             <BaseInput
               name="name"
               type="text"
               label={t("manga.name")}
               limit={limit.name}
-              sx={{ mx: 0 }}
+              sx={{ mx: 1 }}
             />
             <BaseInput
               name="author"
               type="text"
               label={t("manga.author")}
               limit={limit.author}
-              sx={{ mx: 0 }}
+              sx={{ mx: 1 }}
             />
           </BaseForm>
-        </Stack>
-        <Stack direction="row">
-          <Button onClick={handleMangaCreate}>Create</Button>
-          <Button>Search</Button>
         </Stack>
         <BaseTable rows={rows} headers={headers} viewAction={handleViewClick} />
       </Box>
@@ -79,4 +95,4 @@ function SearchManga() {
   );
 }
 
-export default SearchManga;
+export default MangaSearch;

@@ -6,10 +6,14 @@ import TaskAltIcon from "@mui/icons-material/TaskAlt";
 import { FORM } from "../../common/constant";
 
 function BaseForm({
+  mode = FORM.edit, // initial state
+  isStateful = true, // enable form state
   modelObj = {},
+  refreshModel, // refresh parent modelObj without update UI
   onSubmit = async () => true,
   onConfirm = async () => true,
-  refreshModel, // refresh parent modelObj without update UI
+  submitLabel,
+  buttonGroups,
   children,
   ...rest
 }) {
@@ -26,7 +30,7 @@ function BaseForm({
     delayError: undefined,
   });
 
-  const [formStatus, setFormStatus] = useState(FORM.edit);
+  const [formStatus, setFormStatus] = useState(mode);
   const [isLoading, setIsLoading] = useState(false);
   const { t } = useTranslation("common");
 
@@ -34,7 +38,7 @@ function BaseForm({
     console.log("Is Form Submitted.");
     setIsLoading(true);
     onSubmit(methods.getValues()).then((isSucceed) => {
-      setFormStatus(isSucceed ? FORM.confirm : FORM.edit);
+      if (isStateful) setFormStatus(isSucceed ? FORM.confirm : FORM.edit);
       setIsLoading(false);
     });
   };
@@ -43,7 +47,7 @@ function BaseForm({
     console.log("Is Form Confirmed.");
     setIsLoading(true);
     onConfirm(methods.getValues()).then((isSucceed) => {
-      setFormStatus(isSucceed ? FORM.completed : FORM.edit);
+      if (isStateful) setFormStatus(isSucceed ? FORM.completed : FORM.edit);
       setIsLoading(false);
     });
   };
@@ -84,55 +88,56 @@ function BaseForm({
             <TaskAltIcon sx={{ fontSize: 75 }} color="success" />
           </Box>
         )}
-        <Box mx={8} display="flex">
+        <Box mx={8} display="flex" justifyContent="center" alignItems="center">
           {formStatus == FORM.completed && (
             <Button
-              sx={{ mx: "auto" }}
+              sx={{ mx: "5px" }}
               color="secondary"
               size="large"
               variant="contained"
               onClick={resetAction}
               disabled={isLoading}
             >
-              {t("home")}
+              {t("button.home")}
             </Button>
           )}
           {formStatus == FORM.confirm && (
             <Button
-              sx={{ ml: "auto", mr: "10px" }}
+              sx={{ mx: "5px" }}
               color="secondary"
               size="large"
               variant="contained"
               onClick={backAction}
               disabled={isLoading}
             >
-              {t("back")}
+              {t("button.back")}
             </Button>
           )}
           {formStatus == FORM.confirm && (
             <Button
-              sx={{ ml: "10px", mr: "auto" }}
+              sx={{ mx: "5px" }}
               color="success"
               size="large"
               variant="contained"
               onClick={confirmAction}
               disabled={isLoading}
             >
-              {t("confirm")}
+              {t("button.confirm")}
             </Button>
           )}
           {formStatus == FORM.edit && (
             <Button
-              sx={{ mx: "auto" }}
+              sx={{ mx: "5px" }}
               type="submit"
               color="info"
               size="large"
               variant="contained"
               disabled={isLoading}
             >
-              {t("submit")}
+              {submitLabel ? submitLabel : t("button.submit")}
             </Button>
           )}
+          {buttonGroups}
         </Box>
       </Box>
     </FormProvider>
