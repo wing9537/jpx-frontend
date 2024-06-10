@@ -20,7 +20,7 @@ export default defineConfig({
     // this config the proxy rules for the dev server
     proxy: {
       '/jpx': {
-        target: 'http://192.168.50.132',
+        target: 'http://localhost',
         changeOrigin: true,
       },
     },
