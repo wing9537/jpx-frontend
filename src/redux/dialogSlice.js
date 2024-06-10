@@ -14,6 +14,14 @@ const dialogSlice = createSlice({
       state[action.payload] = false;
     },
   },
+  // reducers: builder => {
+  //   builder.addCase('open', (state, action) => {
+  //     state[action.payload] = true;
+  //   });
+  //   builder.addCase('close', (state, action) => {
+  //     state[action.payload] = false;
+  //   });
+  // },
 });
 
 export const { open: openDialog, close: closeDialog } = dialogSlice.actions;

@@ -5,9 +5,9 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 
 // components
-import BaseTable from "../../components/inputs/baseTable";
-import BaseForm from "../../components/inputs/baseForm";
-import BaseInput from "../../components/inputs/baseInput";
+import BaseTable from "../../components/inputs/BaseTable";
+import BaseForm from "../../components/inputs/BaseForm";
+import BaseInput from "../../components/inputs/BaseInput";
 import SettingMenu from "./SettingMenu";
 import { searchManga } from "../../redux/mangaThunk";
 

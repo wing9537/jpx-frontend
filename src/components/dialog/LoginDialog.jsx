@@ -16,8 +16,8 @@ import {
   closeDialog,
   getDialogStateByName,
 } from "../../redux/dialogSlice";
-import BaseInput from "../inputs/baseInput";
-import BaseForm from "../inputs/baseForm";
+import BaseInput from "../inputs/BaseInput";
+import BaseForm from "../inputs/BaseForm";
 
 function LoginDialog() {
   const { t } = useTranslation("dialog");

@@ -2,13 +2,13 @@ import { useTranslation } from "react-i18next";
 import { Box } from "@mui/material";
 
 // components
-import BaseForm from "../components/inputs/baseForm";
-import BaseInput from "../components/inputs/baseInput";
-import BaseTextField from "../components/inputs/baseTextField";
-import BaseSelect from "../components/inputs/baseSelect";
-import BaseRadio from "../components/inputs/baseRadio";
-import BaseCheckbox from "../components/inputs/baseCheckbox";
-import BaseDatePicker from "../components/inputs/baseDatePicker";
+import BaseForm from "../components/inputs/BaseForm";
+import BaseInput from "../components/inputs/BaseInput";
+import BaseTextField from "../components/inputs/BaseTextField";
+import BaseSelect from "../components/inputs/BaseSelect";
+import BaseRadio from "../components/inputs/BaseRadio";
+import BaseCheckbox from "../components/inputs/BaseCheckbox";
+import BaseDatePicker from "../components/inputs/BaseDatePicker";
 
 function Example() {
   const modelObj = {

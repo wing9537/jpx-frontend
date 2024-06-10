@@ -19,14 +19,34 @@ const userSlice = createSlice({
       return defaultValue;
     },
   },
-  extraReducers: {
-    [loginUser.fulfilled]: (state, action) => {
+  extraReducers: builder => {
+    builder.addCase(loginUser.fulfilled, (state, action) => {
       const { name, token } = action.payload;
       state.name = name ?? "";
       state.token = token ?? "";
       window.cookies.set("token", token);
-    },
+    });
   },
+  // reducers: builder => {
+  //   builder.addCase('refresh', (state, action) => {
+  //     const { username, token } = action.payload;
+  //     state.name = username ?? "";
+  //     state.token = token ?? "";
+  //   });
+  //   builder.addCase('logout', (state, action) => {
+  //     console.log("logout");
+  //     window.cookies.remove("token");
+  //     return defaultValue;
+  //   });
+  // },
+  // extraReducers: builder => {
+  //   builder.addCase(loginUser.fulfilled, (state, action) => {
+  //     const { name, token } = action.payload;
+  //     state.name = name ?? "";
+  //     state.token = token ?? "";
+  //     window.cookies.set("token", token);
+  //   });
+  // },
 });
 
 export const { refresh: refreshUser, logout } = userSlice.actions;

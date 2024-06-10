@@ -6,8 +6,8 @@ import { Button } from "@mui/material";
 import { Stack } from "@mui/system";
 
 // components
-import BaseForm from "../../components/inputs/baseForm";
-import BaseInput from "../../components/inputs/baseInput";
+import BaseForm from "../../components/inputs/BaseForm";
+import BaseInput from "../../components/inputs/BaseInput";
 import SettingMenu from "./SettingMenu";
 import { newManga, getManga } from "../../redux/mangaThunk";
 
