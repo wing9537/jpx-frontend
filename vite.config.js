@@ -14,13 +14,15 @@ export default defineConfig({
   ],
   server: {
     // this ensures that the browser opens upon server start
-    open: true,
+    open: false,
+    // this will listen on all addresses
+    host: true,
     // this sets a default port to 3000
     port: 3000,
     // this config the proxy rules for the dev server
     proxy: {
       '/jpx': {
-        target: 'http://localhost',
+        target: 'http://jpx-backend:8080',
         changeOrigin: true,
       },
     },

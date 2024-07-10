@@ -1,0 +1,22 @@
+version: "3.7"
+name: jpx
+services:
+  jpx-frontend:
+    image: jpx-frontend:dev
+    container_name: jpx-frontend
+    restart: always
+    build:
+      context: .
+      target: development
+    ports:
+      - "3000:3000"
+    volumes:
+      - type: volume
+        source: jpx-frontend-data
+        target: /opt/workspace/node_modules
+      - type: bind
+        source: .
+        target: /opt/workspace
+volumes:
+  jpx-frontend-data:
+    name: volume-jpx-frontend
